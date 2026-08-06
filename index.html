@@ -138,7 +138,6 @@
         .stat-team { font-size: 0.6rem; background: rgba(59, 130, 246, 0.08); padding: 1px 10px; border-radius: 40px; color: #8ab4e8; font-weight: 700; margin-right: 2px; white-space: nowrap; flex-shrink: 0; }
         .stat-value { font-weight: 800; color: #fbbf24; min-width: 24px; text-align: right; font-size: 0.85rem; flex-shrink: 0; }
 
-        /* СТАВКИ */
         .bets-placeholder {
             background: rgba(15, 35, 75, 0.40);
             backdrop-filter: blur(12px);
@@ -408,7 +407,7 @@
             { name: "Группа D", teams: ["Байер", "Дельфины", "Unity Team", "Листик", "ФК Коробка"] }
         ];
 
-        // Результаты 1-го тура (обновлено: Воздушные Дьяволы 5:7 Лео Юнайдет)
+        // Результаты 1-го тура
         const playedMatches = [
             { team1: "Воздушные Дьяволы", team2: "Лео Юнайдет", score1: 5, score2: 7, winner: "Лео Юнайдет", date: "5 августа", time: "18:00" },
             { team1: "Боровички", team2: "Cherk City", score1: 8, score2: 4, winner: "Боровички", date: "4 августа", time: "18:30" },
@@ -420,16 +419,19 @@
             { team1: "Unity Team", team2: "Листик", score1: 9, score2: 3, winner: "Unity Team", date: "4 августа", time: "14:00" }
         ];
 
-        // ---------- ДАННЫЕ ПО ИГРОКАМ ----------
+        // ---------- ПОЛНАЯ СТАТИСТИКА ИГРОКОВ ----------
         const playersStats = [
+            // ТЭЦ-27
             { name: "Эргашев", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Саруханов", team: "ТЭЦ-27", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Чухилев", team: "ТЭЦ-27", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Березняк", team: "ТЭЦ-27", goals: 3, assists: 1, yellow: 0, red: 0 },
             { name: "Зайцев", team: "ТЭЦ-27", goals: 2, assists: 1, yellow: 0, red: 0 },
+            // Игривые Дятлы
             { name: "Доленко", team: "Игривые Дятлы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Кузнецов", team: "Игривые Дятлы", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Калашников", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 1, red: 0 },
+            // Байер
             { name: "Московских", team: "Байер", goals: 4, assists: 1, yellow: 0, red: 0 },
             { name: "Джабарян", team: "Байер", goals: 0, assists: 5, yellow: 0, red: 0 },
             { name: "Марков", team: "Байер", goals: 3, assists: 1, yellow: 0, red: 0 },
@@ -438,46 +440,63 @@
             { name: "Вася", team: "Байер", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Спиридонов", team: "Байер", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Эдик", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
+            // Дельфины
             { name: "Генштальт", team: "Дельфины", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Хороз", team: "Дельфины", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Русик", team: "Дельфины", goals: 2, assists: 0, yellow: 0, red: 0 },
             { name: "Сергеев", team: "Дельфины", goals: 0, assists: 1, yellow: 1, red: 0 },
+            // Боровички
             { name: "Акопян", team: "Боровички", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Царукян", team: "Боровички", goals: 0, assists: 3, yellow: 0, red: 0 },
             { name: "Самедов", team: "Боровички", goals: 5, assists: 0, yellow: 0, red: 0 },
             { name: "Меринов", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Коновалов", team: "Боровички", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Атлас", team: "Боровички", goals: 0, assists: 2, yellow: 0, red: 0 },
+            // Cherk City
             { name: "Самодуров", team: "Cherk City", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Смирнов", team: "Cherk City", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Сибагатулин", team: "Cherk City", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Кафаров Заур", team: "Cherk City", goals: 0, assists: 1, yellow: 0, red: 0 },
+            // Пироговские Псы
             { name: "Куликов", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Узунян", team: "Пироговские Псы", goals: 1, assists: 2, yellow: 0, red: 0 },
             { name: "Бычинский", team: "Пироговские Псы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Петросян", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            // Острые
             { name: "Марченков", team: "Острые", goals: 3, assists: 0, yellow: 0, red: 0 },
             { name: "Мартынов", team: "Острые", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Давыдов", team: "Острые", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Евсеев", team: "Острые", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Козлов", team: "Острые", goals: 1, assists: 0, yellow: 0, red: 0 },
+            // Unity Team
             { name: "Скворцов", team: "Unity Team", goals: 4, assists: 1, yellow: 0, red: 0 },
             { name: "Ратов", team: "Unity Team", goals: 0, assists: 2, yellow: 0, red: 0 },
             { name: "Авдохин", team: "Unity Team", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Миксон", team: "Unity Team", goals: 3, assists: 0, yellow: 0, red: 0 },
             { name: "Колян", team: "Unity Team", goals: 1, assists: 0, yellow: 0, red: 0 },
+            // Листик
             { name: "Володя", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Фомичев", team: "Листик", goals: 0, assists: 2, yellow: 0, red: 0 },
             { name: "Макарцев", team: "Листик", goals: 0, assists: 0, yellow: 1, red: 0 },
             { name: "Челноков", team: "Листик", goals: 2, assists: 0, yellow: 0, red: 0 },
+            // Десятка
             { name: "Анар", team: "Десятка", goals: 0, assists: 0, yellow: 1, red: 0 },
             { name: "Юра", team: "Десятка", goals: 3, assists: 0, yellow: 1, red: 0 },
             { name: "Рюлин", team: "Десятка", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Бутуз", team: "Десятка", goals: 1, assists: 0, yellow: 0, red: 0 },
+            // Lit Energy
             { name: "Абарен", team: "Lit Energy", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Бубликов", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Давид Шкуратов", team: "Lit Energy", goals: 0, assists: 1, yellow: 1, red: 0 },
-            { name: "Савва Косов", team: "Lit Energy", goals: 0, assists: 0, yellow: 0, red: 1 }
+            { name: "Савва Косов", team: "Lit Energy", goals: 0, assists: 0, yellow: 0, red: 1 },
+            // Лео Юнайдет
+            { name: "Скороходов", team: "Лео Юнайдет", goals: 5, assists: 0, yellow: 0, red: 0 },
+            { name: "Стукалов", team: "Лео Юнайдет", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Болотов", team: "Лео Юнайдет", goals: 0, assists: 2, yellow: 1, red: 0 },
+            // Воздушные Дьяволы
+            { name: "Тихонов", team: "Воздушные Дьяволы", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Хасанов", team: "Воздушные Дьяволы", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Комиссаров", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 }
         ];
 
         // ---------- СТАТИСТИКА ----------
@@ -784,9 +803,21 @@
         function renderNews() {
             const feed = document.getElementById('newsFeed');
             const newsData = [
-                { title: "⚡ БУУУУУУМ🚨Тимур Татунашвили переходит в Пироговские Псы!", desc: "Двухкратный победитель МЛЧ Тимур Татунашвили переходит в Пироговские Псы. Самое медийное лицо лиги", image: "images/tatu.jpg" },
-                { title: "📋 Опубликовано расписание первого тура", desc: "Матчи пройдут 4 и 5 августа на стадионах Норфа и Классика. Ждём ярких игр!", image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200&h=540&fit=crop" },
-                { title: "🏆 Трофей FOOTCUP ждёт своего героя", desc: "Главный приз турнира уже готов. Кто поднимет кубок над головой?", image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=540&fit=crop" }
+                { 
+                    title: "⚡ БУУУУУУМ🚨Тимур Татунашвили переходит в Пироговские Псы!", 
+                    desc: "Двухкратный победитель МЛЧ Тимур Татунашвили переходит в Пироговские Псы. Самое медийное лицо лиги", 
+                    image: "images/tatu.jpg" 
+                },
+                { 
+                    title: "😢 ТРАГЕДИЯ В FOOTCUP! Илья Куликов сломал ногу и выбыл с турнира", 
+                    desc: "В матче 1-го тура Илья Куликов из Пироговских Псы получил тяжёлую травму — перелом ноги. К сожалению, он вынужден пропустить остаток турнира. Желаем Илье скорейшего выздоровления и возвращения на поле! 💪❤️", 
+                    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=1200&h=540&fit=crop" 
+                },
+                { 
+                    title: "🏆 Трофей FOOTCUP ждёт своего героя", 
+                    desc: "Главный приз турнира уже готов. Кто поднимет кубок над головой?", 
+                    image: "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1200&h=540&fit=crop" 
+                }
             ];
 
             feed.innerHTML = '';
@@ -983,8 +1014,8 @@
         renderGallery();
         setupNavigation();
 
-        console.log('🚀 FOOTCUP 2026 — ДОБАВЛЕН РАЗДЕЛ СТАВКИ!');
-        console.log('✅ Воздушные Дьяволы 5:7 Лео Юнайдет — матч засчитан!');
+        console.log('🚀 FOOTCUP 2026 — НОВОСТЬ О ТРАВМЕ С ФОТО ДОБАВЛЕНА!');
+        console.log('💪 Желаем Илье скорейшего выздоровления!');
     })();
 </script>
 </body>
