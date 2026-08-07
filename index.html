@@ -407,7 +407,7 @@
             { name: "Группа D", teams: ["Байер", "Дельфины", "Unity Team", "Листик", "ФК Коробка"] }
         ];
 
-        // ✅ РЕЗУЛЬТАТЫ 1-го и 2-го тура (убраны счета у несыгранных матчей)
+        // ✅ ОБНОВЛЁННЫЕ РЕЗУЛЬТАТЫ (Пандора 3:0, Лео 8:8)
         const playedMatches = [
             // ТУР 1
             { team1: "Воздушные Дьяволы", team2: "Лео Юнайдет", score1: 5, score2: 7, winner: "Лео Юнайдет", date: "5 августа", time: "18:00" },
@@ -419,20 +419,18 @@
             { team1: "Байер", team2: "Дельфины", score1: 12, score2: 4, winner: "Байер", date: "4 августа", time: "17:00" },
             { team1: "Unity Team", team2: "Листик", score1: 9, score2: 3, winner: "Unity Team", date: "4 августа", time: "14:00" },
             
-            // ТУР 2 (счета только у известных матчей)
+            // ТУР 2 (исправлено: Пандора 3:0, Лео 8:8)
             { team1: "Байер", team2: "Unity Team", score1: 11, score2: 6, winner: "Байер", date: "6 августа", time: "14:15" },
             { team1: "ФК Коробка", team2: "Дельфины", score1: 6, score2: 10, winner: "Дельфины", date: "6 августа", time: "15:00" },
-            // Пандора — Воздушные Дьяволы — СЧЕТ НЕ ИЗВЕСТЕН
-            { team1: "Пандора", team2: "Воздушные Дьяволы", score1: null, score2: null, winner: null, date: "6 августа", time: "15:30" },
+            { team1: "Пандора", team2: "Воздушные Дьяволы", score1: 3, score2: 0, winner: "Пандора", date: "6 августа", time: "15:30" },
             { team1: "Рубин", team2: "Пироговские Псы", score1: 4, score2: 11, winner: "Пироговские Псы", date: "6 августа", time: "16:30" },
             { team1: "Десятка", team2: "Шарапа", score1: 10, score2: 4, winner: "Десятка", date: "6 августа", time: "17:00" },
             { team1: "Острые", team2: "BB TEAM", score1: 6, score2: 4, winner: "Острые", date: "6 августа", time: "18:00" },
             { team1: "Lit Energy", team2: "Игривые Дятлы", score1: 14, score2: 0, winner: "Lit Energy", date: "6 августа", time: "19:45" },
-            // Боровички — Лео Юнайдет — СЧЕТ НЕ ИЗВЕСТЕН
-            { team1: "Боровички", team2: "Лео Юнайдет", score1: null, score2: null, winner: null, date: "6 августа", time: "19:45" }
+            { team1: "Боровички", team2: "Лео Юнайдет", score1: 8, score2: 8, winner: null, date: "6 августа", time: "19:45" }
         ];
 
-        // ---------- ОБНОВЛЁННАЯ СТАТИСТИКА ИГРОКОВ ----------
+        // ---------- СТАТИСТИКА ИГРОКОВ (без изменений) ----------
         const playersStats = [
             // 1. ТЭЦ
             { name: "Эргашев", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
@@ -1062,7 +1060,9 @@
         renderGallery();
         setupNavigation();
 
-        console.log('🚀 FOOTCUP 2026 — ОБНОВЛЕНА СТАТИСТИКА И УБРАНЫ НЕИЗВЕСТНЫЕ СЧЕТА!');
+        console.log('🚀 FOOTCUP 2026 — ОБНОВЛЕНЫ РЕЗУЛЬТАТЫ 2-ГО ТУРА!');
+        console.log('✅ Пандора 3:0 Воздушные Дьяволы');
+        console.log('🤝 Лео Юнайдет 8:8 Боровички');
     })();
 </script>
 </body>
