@@ -171,7 +171,6 @@
             position: relative;
             z-index: 1;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
         .bets-placeholder h2 {
             font-size: 1.6rem;
             color: #fbbf24;
@@ -407,7 +406,7 @@
             { name: "Группа D", teams: ["Байер", "Дельфины", "Unity Team", "Листик", "ФК Коробка"] }
         ];
 
-        // ✅ ОБНОВЛЁННЫЕ РЕЗУЛЬТАТЫ (1, 2 и 3 ТУР)
+        // РЕЗУЛЬТАТЫ МАТЧЕЙ
         const playedMatches = [
             // ТУР 1
             { team1: "Воздушные Дьяволы", team2: "Лео Юнайтед", score1: 5, score2: 7, winner: "Лео Юнайтед", date: "5 августа", time: "18:00" },
@@ -418,7 +417,6 @@
             { team1: "Игривые Дятлы", team2: "ТЭЦ-27", score1: 4, score2: 8, winner: "ТЭЦ-27", date: "4 августа", time: "19:45" },
             { team1: "Байер", team2: "Дельфины", score1: 12, score2: 4, winner: "Байер", date: "4 августа", time: "17:00" },
             { team1: "Unity Team", team2: "Листик", score1: 9, score2: 3, winner: "Unity Team", date: "4 августа", time: "14:00" },
-            
             // ТУР 2
             { team1: "Байер", team2: "Unity Team", score1: 11, score2: 6, winner: "Байер", date: "6 августа", time: "14:15" },
             { team1: "ФК Коробка", team2: "Дельфины", score1: 6, score2: 10, winner: "Дельфины", date: "6 августа", time: "15:00" },
@@ -428,8 +426,7 @@
             { team1: "Острые", team2: "BB TEAM", score1: 6, score2: 4, winner: "Острые", date: "6 августа", time: "18:00" },
             { team1: "Lit Energy", team2: "Игривые Дятлы", score1: 14, score2: 0, winner: "Lit Energy", date: "6 августа", time: "19:45" },
             { team1: "Боровички", team2: "Лео Юнайтед", score1: 8, score2: 8, winner: null, date: "6 августа", time: "19:45" },
-
-            // ТУР 3 (НОВЫЕ РЕЗУЛЬТАТЫ)
+            // ТУР 3
             { team1: "Острые", team2: "Инфинити", score1: 7, score2: 4, winner: "Острые", date: "7 августа", time: "20:00" },
             { team1: "Лео Юнайтед", team2: "Пандора", score1: 7, score2: 9, winner: "Пандора", date: "8 августа", time: "16:00" },
             { team1: "Десятка", team2: "ТЭЦ-27", score1: 21, score2: 1, winner: "Десятка", date: "8 августа", time: "17:45" },
@@ -437,11 +434,10 @@
             { team1: "Дельфины", team2: "Листик", score1: 14, score2: 1, winner: "Дельфины", date: "8 августа", time: "19:00" },
             { team1: "ФК Коробка", team2: "Байер", score1: 4, score2: 9, winner: "Байер", date: "8 августа", time: "19:15" },
             { team1: "Lit Energy", team2: "Шарапа", score1: 6, score2: 2, winner: "Lit Energy", date: "8 августа", time: "20:15" },
-            // Воздушные Дьяволы — Черк Сити (из скриншота)
-            { team1: "Воздушные Дьяволы", team2: "Черк Сити", score1: 9, score2: 4, winner: "Воздушные Дьяволы", date: "8 августа", time: "18:00" }
+            { team1: "Воздушные Дьяволы", team2: "Черк Сити", score1: 8, score2: 4, winner: "Воздушные Дьяволы", date: "8 августа", time: "18:00" }
         ];
 
-        // ---------- СТАТИСТИКА ИГРОКОВ ----------
+        // ---------- ПОЛНАЯ СТАТИСТИКА ИГРОКОВ ----------
         const playersStats = [
             // 1. ТЭЦ
             { name: "Эргашев", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
@@ -453,51 +449,66 @@
             { name: "Доленко", team: "Игривые Дятлы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Кузнецов", team: "Игривые Дятлы", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Калашников", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 1, red: 0 },
+            { name: "Тимонин", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 0, red: 0 },
             // 3. Байер
             { name: "Московских", team: "Байер", goals: 5, assists: 2, yellow: 0, red: 0 },
-            { name: "Джабарян", team: "Байер", goals: 0, assists: 9, yellow: 0, red: 0 },
-            { name: "Марков", team: "Байер", goals: 9, assists: 2, yellow: 0, red: 0 },
-            { name: "Корпеев", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Джабарян", team: "Байер", goals: 0, assists: 10, yellow: 0, red: 0 },
+            { name: "Марков", team: "Байер", goals: 12, assists: 3, yellow: 0, red: 0 },
+            { name: "Карпеев", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Монгол", team: "Байер", goals: 2, assists: 1, yellow: 1, red: 0 },
-            { name: "Тельцов", team: "Байер", goals: 5, assists: 3, yellow: 0, red: 0 },
+            { name: "Тельцов", team: "Байер", goals: 8, assists: 4, yellow: 0, red: 0 },
             { name: "Спиридонов", team: "Байер", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Эдик", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Эдик (Арутюнов)", team: "Байер", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Ключев", team: "Байер", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Ульянов", team: "Байер", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Ахмедкаримов", team: "Байер", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Ванюков", team: "Байер", goals: 0, assists: 3, yellow: 0, red: 0 },
             // 4. Дельфины
             { name: "Генштальт", team: "Дельфины", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Хороз", team: "Дельфины", goals: 2, assists: 2, yellow: 0, red: 0 },
-            { name: "Русик", team: "Дельфины", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Хороз", team: "Дельфины", goals: 2, assists: 3, yellow: 1, red: 0 },
+            { name: "Русик", team: "Дельфины", goals: 5, assists: 4, yellow: 0, red: 0 },
             { name: "Сергеев", team: "Дельфины", goals: 0, assists: 2, yellow: 2, red: 0 },
             { name: "Шмелев", team: "Дельфины", goals: 5, assists: 2, yellow: 0, red: 0 },
             { name: "Маминов", team: "Дельфины", goals: 1, assists: 2, yellow: 0, red: 0 },
-            { name: "Скалони", team: "Дельфины", goals: 1, assists: 3, yellow: 0, red: 0 },
+            { name: "Скалони (Морозов)", team: "Дельфины", goals: 2, assists: 4, yellow: 0, red: 0 },
+            { name: "Гощан", team: "Дельфины", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Аслам", team: "Дельфины", goals: 5, assists: 1, yellow: 0, red: 0 },
+            { name: "Ара", team: "Дельфины", goals: 3, assists: 1, yellow: 0, red: 0 },
             // 5. Боровички
             { name: "Акопян", team: "Боровички", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Царукян", team: "Боровички", goals: 0, assists: 2, yellow: 0, red: 0 },
-            { name: "Самедов", team: "Боровички", goals: 5, assists: 0, yellow: 0, red: 0 },
-            { name: "Меринов", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
-            { name: "Коновалов", team: "Боровички", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Атлас", team: "Боровички", goals: 0, assists: 2, yellow: 0, red: 0 },
+            { name: "Царукян", team: "Боровички", goals: 1, assists: 3, yellow: 1, red: 0 },
+            { name: "Самедов", team: "Боровички", goals: 7, assists: 1, yellow: 1, red: 0 },
+            { name: "Меринов", team: "Боровички", goals: 0, assists: 1, yellow: 1, red: 0 },
+            { name: "Коновалов", team: "Боровички", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Атлас", team: "Боровички", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Мельник", team: "Боровички", goals: 2, assists: 2, yellow: 1, red: 0 },
+            { name: "Евсеев", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Ванюан", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
             // 6. Черк Сити
             { name: "Самодуров", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Смирнов", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Сибагатулин", team: "Черк Сити", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Кафаров Заур", team: "Черк Сити", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Смирнов", team: "Черк Сити", goals: 3, assists: 0, yellow: 1, red: 0 },
+            { name: "Сибагатулин", team: "Черк Сити", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Кафаров Заур", team: "Черк Сити", goals: 0, assists: 2, yellow: 0, red: 0 },
+            { name: "Рузин", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Ручин", team: "Черк Сити", goals: 0, assists: 0, yellow: 1, red: 0 },
             // 7. Пироговские Псы
             { name: "Куликов", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Узунян", team: "Пироговские Псы", goals: 4, assists: 5, yellow: 0, red: 0 },
+            { name: "Узунян (Ваган)", team: "Пироговские Псы", goals: 7, assists: 6, yellow: 0, red: 0 },
             { name: "Бычинский", team: "Пироговские Псы", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Петросян", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Утюг", team: "Пироговские Псы", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Петросян", team: "Пироговские Псы", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Утюг (Утюганов)", team: "Пироговские Псы", goals: 4, assists: 2, yellow: 0, red: 0 },
             { name: "Ален", team: "Пироговские Псы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Тульчинский", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Гор", team: "Пироговские Псы", goals: 3, assists: 2, yellow: 0, red: 0 },
+            { name: "Гор (Степанян)", team: "Пироговские Псы", goals: 5, assists: 2, yellow: 0, red: 0 },
+            { name: "Трусов", team: "Пироговские Псы", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Саргсян", team: "Пироговские Псы", goals: 0, assists: 3, yellow: 0, red: 0 },
             // 8. Острые
-            { name: "Марченков", team: "Острые", goals: 5, assists: 1, yellow: 1, red: 0 },
-            { name: "Мартынов", team: "Острые", goals: 1, assists: 3, yellow: 0, red: 0 },
-            { name: "Давыдов", team: "Острые", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Марченков", team: "Острые", goals: 8, assists: 2, yellow: 1, red: 0 },
+            { name: "Мартынов", team: "Острые", goals: 2, assists: 3, yellow: 0, red: 0 },
+            { name: "Давыдов", team: "Острые", goals: 3, assists: 2, yellow: 0, red: 0 },
             { name: "Евсеев", team: "Острые", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Козлов", team: "Острые", goals: 3, assists: 2, yellow: 0, red: 0 },
-            { name: "Жирович", team: "Острые", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Козлов", team: "Острые", goals: 4, assists: 3, yellow: 0, red: 0 },
+            { name: "Жирович (Журович)", team: "Острые", goals: 1, assists: 1, yellow: 0, red: 0 },
             // 9. Unity Team
             { name: "Скворцов", team: "Unity Team", goals: 5, assists: 1, yellow: 0, red: 0 },
             { name: "Ратов", team: "Unity Team", goals: 1, assists: 3, yellow: 0, red: 0 },
@@ -510,6 +521,8 @@
             { name: "Фомичев", team: "Листик", goals: 0, assists: 2, yellow: 0, red: 0 },
             { name: "Макарцев", team: "Листик", goals: 0, assists: 0, yellow: 1, red: 0 },
             { name: "Челноков", team: "Листик", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Тимонин", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Кузнецов", team: "Листик", goals: 0, assists: 1, yellow: 0, red: 0 },
             // 11. Десятка
             { name: "Анар", team: "Десятка", goals: 0, assists: 2, yellow: 1, red: 0 },
             { name: "Осиян", team: "Десятка", goals: 6, assists: 1, yellow: 1, red: 0 },
@@ -520,41 +533,68 @@
             { name: "Карапетян", team: "Десятка", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Хохлов", team: "Десятка", goals: 1, assists: 0, yellow: 0, red: 0 },
             // 12. Lit Energy
-            { name: "Абарен", team: "Lit Energy", goals: 3, assists: 2, yellow: 0, red: 0 },
-            { name: "Бубликов", team: "Lit Energy", goals: 3, assists: 1, yellow: 0, red: 0 },
-            { name: "Давид Шкуратов", team: "Lit Energy", goals: 2, assists: 2, yellow: 1, red: 0 },
+            { name: "Абарен (Абаренов)", team: "Lit Energy", goals: 5, assists: 2, yellow: 0, red: 0 },
+            { name: "Бубликов", team: "Lit Energy", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Давид Шкуратов", team: "Lit Energy", goals: 5, assists: 3, yellow: 1, red: 0 },
             { name: "Савва Косов", team: "Lit Energy", goals: 1, assists: 0, yellow: 0, red: 1 },
             { name: "Гордеев", team: "Lit Energy", goals: 3, assists: 0, yellow: 0, red: 0 },
-            { name: "Ефимов", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Ефимов", team: "Lit Energy", goals: 1, assists: 1, yellow: 1, red: 0 },
             { name: "Гершерский", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Герасименко", team: "Lit Energy", goals: 0, assists: 1, yellow: 1, red: 0 },
             // 13. Лео Юнайтед
-            { name: "Скороходов", team: "Лео Юнайтед", goals: 5, assists: 0, yellow: 0, red: 0 },
-            { name: "Стукалов", team: "Лео Юнайтед", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Скороходов", team: "Лео Юнайтед", goals: 12, assists: 3, yellow: 0, red: 0 },
+            { name: "Стукалов", team: "Лео Юнайтед", goals: 3, assists: 3, yellow: 0, red: 0 },
             { name: "Болотов", team: "Лео Юнайтед", goals: 0, assists: 2, yellow: 1, red: 0 },
+            { name: "Шабанов", team: "Лео Юнайтед", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Малоземов", team: "Лео Юнайтед", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Демехин", team: "Лео Юнайтед", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Романов", team: "Лео Юнайтед", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Иванов", team: "Лео Юнайтед", goals: 1, assists: 0, yellow: 1, red: 0 },
+            { name: "Каробка", team: "Лео Юнайтед", goals: 0, assists: 0, yellow: 0, red: 1 },
             // 14. Воздушные Дьяволы
-            { name: "Тихонов", team: "Воздушные Дьяволы", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Хасанов", team: "Воздушные Дьяволы", goals: 2, assists: 2, yellow: 0, red: 0 },
-            { name: "Комиссаров", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            // 15. Коробка
-            { name: "Белоконь", team: "ФК Коробка", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Сидикзода", team: "ФК Коробка", goals: 1, assists: 2, yellow: 0, red: 0 },
-            { name: "Авдонян", team: "ФК Коробка", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Тихонов", team: "Воздушные Дьяволы", goals: 5, assists: 2, yellow: 0, red: 0 },
+            { name: "Хасанов", team: "Воздушные Дьяволы", goals: 4, assists: 3, yellow: 0, red: 0 },
+            { name: "Комиссаров", team: "Воздушные Дьяволы", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Пархомец", team: "Воздушные Дьяволы", goals: 3, assists: 4, yellow: 0, red: 0 },
+            { name: "Тихомиров", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Ибрагимов", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            // 15. ФК Коробка
+            { name: "Белоконь", team: "ФК Коробка", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Сидикзода (Сидиксода)", team: "ФК Коробка", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Авдонян (Авдоян)", team: "ФК Коробка", goals: 2, assists: 2, yellow: 0, red: 0 },
             { name: "Иванов", team: "ФК Коробка", goals: 0, assists: 2, yellow: 0, red: 0 },
             // 16. BB TEAM
-            { name: "Евсюков", team: "BB TEAM", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Перчамлы", team: "BB TEAM", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Затенков", team: "BB TEAM", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Евсюков", team: "BB TEAM", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Перчамлы", team: "BB TEAM", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Затенков", team: "BB TEAM", goals: 3, assists: 2, yellow: 0, red: 0 },
+            { name: "Жучков", team: "BB TEAM", goals: 3, assists: 0, yellow: 1, red: 0 },
             // 17. Шарапа
-            { name: "Зотов", team: "Шарапа", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Зотов", team: "Шарапа", goals: 2, assists: 0, yellow: 0, red: 0 },
             { name: "Гасанов", team: "Шарапа", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Зверез", team: "Шарапа", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Зверез", team: "Шарапа", goals: 1, assists: 1, yellow: 1, red: 0 },
             { name: "Федоров", team: "Шарапа", goals: 0, assists: 1, yellow: 1, red: 0 },
             { name: "Романов", team: "Шарапа", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Кузнецов", team: "Шарапа", goals: 1, assists: 1, yellow: 1, red: 0 },
+            { name: "Мережкин", team: "Шарапа", goals: 0, assists: 1, yellow: 0, red: 0 },
             // 18. Рубин
             { name: "Авакян", team: "Рубин", goals: 0, assists: 0, yellow: 2, red: 1 },
             { name: "Казарян", team: "Рубин", goals: 2, assists: 2, yellow: 0, red: 0 },
             { name: "Юрку", team: "Рубин", goals: 0, assists: 1, yellow: 0, red: 0 },
-            { name: "Сухарь", team: "Рубин", goals: 2, assists: 1, yellow: 0, red: 0 }
+            { name: "Сухарь", team: "Рубин", goals: 2, assists: 1, yellow: 0, red: 0 },
+            // 19. Пандора
+            { name: "Лапицкий", team: "Пандора", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Харламов", team: "Пандора", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Марченко", team: "Пандора", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Шелков", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Ильин", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Мамонтов", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Молотов", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
+            // 20. Инфинити
+            { name: "Юсифов", team: "Инфинити", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Николаев", team: "Инфинити", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Уздаков", team: "Инфинити", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Рахамимов", team: "Инфинити", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Шахбазян", team: "Инфинити", goals: 0, assists: 1, yellow: 0, red: 0 }
         ];
 
         // ---------- СТАТИСТИКА ----------
@@ -1072,8 +1112,7 @@
         renderGallery();
         setupNavigation();
 
-        console.log('🚀 FOOTCUP 2026 — ОБНОВЛЕНЫ РЕЗУЛЬТАТЫ 3-го ТУРА!');
-        console.log('📊 По данным со скриншота');
+        console.log('🚀 FOOTCUP 2026 — СТАТИСТИКА ОБНОВЛЕНА!');
     })();
 </script>
 </body>
