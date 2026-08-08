@@ -376,11 +376,11 @@
     (function() {
         // ⭐ КОМАНДЫ С ЭМБЛЕМАМИ ⭐
         const teamsWithEmblems = [
-            { name: "Лео Юнайдет", emblem: "images/leo_united.jpg" },
+            { name: "Лео Юнайтед", emblem: "images/leo_united.jpg" },
             { name: "Воздушные Дьяволы", emblem: "images/vozdushnye.jpg" },
             { name: "Боровички", emblem: "images/borovichki.jpg" },
             { name: "Пандора", emblem: "images/pandora.png" },
-            { name: "Cherk City", emblem: "images/cherk_city.jpg" },
+            { name: "Черк Сити", emblem: "images/cherk_city.jpg" },
             { name: "Пироговские Псы", emblem: "images/pirogovskie_psy.jpg" },
             { name: "Острые", emblem: "images/ostrye.jpg" },
             { name: "Рубин", emblem: "images/rubin.jpg" },
@@ -401,17 +401,17 @@
         const teamNames = teamsWithEmblems.map(t => t.name);
         
         const groups = [
-            { name: "Группа A", teams: ["Лео Юнайдет", "Воздушные Дьяволы", "Боровички", "Пандора", "Cherk City"] },
+            { name: "Группа A", teams: ["Лео Юнайтед", "Воздушные Дьяволы", "Боровички", "Пандора", "Черк Сити"] },
             { name: "Группа B", teams: ["Пироговские Псы", "Острые", "Рубин", "Инфинити", "BB TEAM"] },
             { name: "Группа C", teams: ["Lit Energy", "Десятка", "Игривые Дятлы", "ТЭЦ-27", "Шарапа"] },
             { name: "Группа D", teams: ["Байер", "Дельфины", "Unity Team", "Листик", "ФК Коробка"] }
         ];
 
-        // ✅ ОБНОВЛЁННЫЕ РЕЗУЛЬТАТЫ (Пандора 3:0, Лео 8:8)
+        // ✅ ОБНОВЛЁННЫЕ РЕЗУЛЬТАТЫ (1, 2 и 3 ТУР)
         const playedMatches = [
             // ТУР 1
-            { team1: "Воздушные Дьяволы", team2: "Лео Юнайдет", score1: 5, score2: 7, winner: "Лео Юнайдет", date: "5 августа", time: "18:00" },
-            { team1: "Боровички", team2: "Cherk City", score1: 8, score2: 4, winner: "Боровички", date: "4 августа", time: "18:30" },
+            { team1: "Воздушные Дьяволы", team2: "Лео Юнайтед", score1: 5, score2: 7, winner: "Лео Юнайтед", date: "5 августа", time: "18:00" },
+            { team1: "Боровички", team2: "Черк Сити", score1: 8, score2: 4, winner: "Боровички", date: "4 августа", time: "18:30" },
             { team1: "Пироговские Псы", team2: "Острые", score1: 4, score2: 6, winner: "Острые", date: "4 августа", time: "18:30" },
             { team1: "Рубин", team2: "Инфинити", score1: 0, score2: 3, winner: "Инфинити", date: "4 августа", time: "17:00" },
             { team1: "Lit Energy", team2: "Десятка", score1: 2, score2: 4, winner: "Десятка", date: "4 августа", time: "13:00" },
@@ -419,7 +419,7 @@
             { team1: "Байер", team2: "Дельфины", score1: 12, score2: 4, winner: "Байер", date: "4 августа", time: "17:00" },
             { team1: "Unity Team", team2: "Листик", score1: 9, score2: 3, winner: "Unity Team", date: "4 августа", time: "14:00" },
             
-            // ТУР 2 (исправлено: Пандора 3:0, Лео 8:8)
+            // ТУР 2
             { team1: "Байер", team2: "Unity Team", score1: 11, score2: 6, winner: "Байер", date: "6 августа", time: "14:15" },
             { team1: "ФК Коробка", team2: "Дельфины", score1: 6, score2: 10, winner: "Дельфины", date: "6 августа", time: "15:00" },
             { team1: "Пандора", team2: "Воздушные Дьяволы", score1: 3, score2: 0, winner: "Пандора", date: "6 августа", time: "15:30" },
@@ -427,10 +427,21 @@
             { team1: "Десятка", team2: "Шарапа", score1: 10, score2: 4, winner: "Десятка", date: "6 августа", time: "17:00" },
             { team1: "Острые", team2: "BB TEAM", score1: 6, score2: 4, winner: "Острые", date: "6 августа", time: "18:00" },
             { team1: "Lit Energy", team2: "Игривые Дятлы", score1: 14, score2: 0, winner: "Lit Energy", date: "6 августа", time: "19:45" },
-            { team1: "Боровички", team2: "Лео Юнайдет", score1: 8, score2: 8, winner: null, date: "6 августа", time: "19:45" }
+            { team1: "Боровички", team2: "Лео Юнайтед", score1: 8, score2: 8, winner: null, date: "6 августа", time: "19:45" },
+
+            // ТУР 3 (НОВЫЕ РЕЗУЛЬТАТЫ)
+            { team1: "Острые", team2: "Инфинити", score1: 7, score2: 4, winner: "Острые", date: "7 августа", time: "20:00" },
+            { team1: "Лео Юнайтед", team2: "Пандора", score1: 7, score2: 9, winner: "Пандора", date: "8 августа", time: "16:00" },
+            { team1: "Десятка", team2: "ТЭЦ-27", score1: 21, score2: 1, winner: "Десятка", date: "8 августа", time: "17:45" },
+            { team1: "BB TEAM", team2: "Пироговские Псы", score1: 7, score2: 9, winner: "Пироговские Псы", date: "8 августа", time: "18:00" },
+            { team1: "Дельфины", team2: "Листик", score1: 14, score2: 1, winner: "Дельфины", date: "8 августа", time: "19:00" },
+            { team1: "ФК Коробка", team2: "Байер", score1: 4, score2: 9, winner: "Байер", date: "8 августа", time: "19:15" },
+            { team1: "Lit Energy", team2: "Шарапа", score1: 6, score2: 2, winner: "Lit Energy", date: "8 августа", time: "20:15" },
+            // Воздушные Дьяволы — Черк Сити (из скриншота)
+            { team1: "Воздушные Дьяволы", team2: "Черк Сити", score1: 8, score2: 4, winner: "Воздушные Дьяволы", date: "8 августа", time: "18:00" }
         ];
 
-        // ---------- СТАТИСТИКА ИГРОКОВ (без изменений) ----------
+        // ---------- СТАТИСТИКА ИГРОКОВ ----------
         const playersStats = [
             // 1. ТЭЦ
             { name: "Эргашев", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
@@ -466,11 +477,11 @@
             { name: "Меринов", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Коновалов", team: "Боровички", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Атлас", team: "Боровички", goals: 0, assists: 2, yellow: 0, red: 0 },
-            // 6. Cherk City
-            { name: "Самодуров", team: "Cherk City", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Смирнов", team: "Cherk City", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Сибагатулин", team: "Cherk City", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Кафаров Заур", team: "Cherk City", goals: 0, assists: 1, yellow: 0, red: 0 },
+            // 6. Черк Сити
+            { name: "Самодуров", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Смирнов", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Сибагатулин", team: "Черк Сити", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Кафаров Заур", team: "Черк Сити", goals: 0, assists: 1, yellow: 0, red: 0 },
             // 7. Пироговские Псы
             { name: "Куликов", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Узунян", team: "Пироговские Псы", goals: 4, assists: 5, yellow: 0, red: 0 },
@@ -516,10 +527,10 @@
             { name: "Гордеев", team: "Lit Energy", goals: 3, assists: 0, yellow: 0, red: 0 },
             { name: "Ефимов", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Гершерский", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
-            // 13. Лео Юнайдет
-            { name: "Скороходов", team: "Лео Юнайдет", goals: 5, assists: 0, yellow: 0, red: 0 },
-            { name: "Стукалов", team: "Лео Юнайдет", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Болотов", team: "Лео Юнайдет", goals: 0, assists: 2, yellow: 1, red: 0 },
+            // 13. Лео Юнайтед
+            { name: "Скороходов", team: "Лео Юнайтед", goals: 5, assists: 0, yellow: 0, red: 0 },
+            { name: "Стукалов", team: "Лео Юнайтед", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Болотов", team: "Лео Юнайтед", goals: 0, assists: 2, yellow: 1, red: 0 },
             // 14. Воздушные Дьяволы
             { name: "Тихонов", team: "Воздушные Дьяволы", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Хасанов", team: "Воздушные Дьяволы", goals: 2, assists: 2, yellow: 0, red: 0 },
@@ -703,8 +714,8 @@
                 {
                     name: "Тур 1",
                     matches: [
-                        { team1: "Воздушные Дьяволы", team2: "Лео Юнайдет", stadium: "Норфа" },
-                        { team1: "Боровички", team2: "Cherk City", stadium: "Классика" },
+                        { team1: "Воздушные Дьяволы", team2: "Лео Юнайтед", stadium: "Норфа" },
+                        { team1: "Боровички", team2: "Черк Сити", stadium: "Классика" },
                         { team1: "Пироговские Псы", team2: "Острые", stadium: "Норфа" },
                         { team1: "Рубин", team2: "Инфинити", stadium: "Классика" },
                         { team1: "Lit Energy", team2: "Десятка", stadium: "Классика" },
@@ -723,25 +734,26 @@
                         { team1: "Десятка", team2: "Шарапа", stadium: "Классика", date: "6 августа", time: "17:00" },
                         { team1: "Острые", team2: "BB TEAM", stadium: "Норфа", date: "6 августа", time: "18:00" },
                         { team1: "Lit Energy", team2: "Игривые Дятлы", stadium: "Норфа", date: "6 августа", time: "19:45" },
-                        { team1: "Боровички", team2: "Лео Юнайдет", stadium: "Классика", date: "6 августа", time: "19:45" }
+                        { team1: "Боровички", team2: "Лео Юнайтед", stadium: "Классика", date: "6 августа", time: "19:45" }
                     ]
                 },
                 {
                     name: "Тур 3",
                     matches: [
                         { team1: "Острые", team2: "Инфинити", stadium: "Норфа", date: "7 августа", time: "20:00" },
-                        { team1: "Лео Юнайдет", team2: "Пандора", stadium: "Норфа", date: "8 августа", time: "16:00" },
+                        { team1: "Лео Юнайтед", team2: "Пандора", stadium: "Норфа", date: "8 августа", time: "16:00" },
                         { team1: "Десятка", team2: "ТЭЦ-27", stadium: "Классика", date: "8 августа", time: "17:45" },
                         { team1: "BB TEAM", team2: "Пироговские Псы", stadium: "Норфа", date: "8 августа", time: "18:00" },
                         { team1: "Дельфины", team2: "Листик", stadium: "Классика", date: "8 августа", time: "19:00" },
                         { team1: "ФК Коробка", team2: "Байер", stadium: "Норфа", date: "8 августа", time: "19:15" },
-                        { team1: "Lit Energy", team2: "Шарапа", stadium: "Классика", date: "8 августа", time: "20:15" }
+                        { team1: "Lit Energy", team2: "Шарапа", stadium: "Классика", date: "8 августа", time: "20:15" },
+                        { team1: "Воздушные Дьяволы", team2: "Черк Сити", stadium: "Норфа", date: "8 августа", time: "18:00" }
                     ]
                 },
                 {
                     name: "Тур 4",
                     matches: [
-                        { team1: "Лео Юнайдет", team2: "Cherk City", stadium: "Классика" },
+                        { team1: "Лео Юнайтед", team2: "Черк Сити", stadium: "Классика" },
                         { team1: "Боровички", team2: "Пандора", stadium: "Норфа" },
                         { team1: "Пироговские Псы", team2: "Инфинити", stadium: "Норфа" },
                         { team1: "Рубин", team2: "BB TEAM", stadium: "Классика" },
@@ -755,7 +767,7 @@
                     name: "Тур 5",
                     matches: [
                         { team1: "Воздушные Дьяволы", team2: "Боровички", stadium: "Норфа" },
-                        { team1: "Пандора", team2: "Cherk City", stadium: "Классика" },
+                        { team1: "Пандора", team2: "Черк Сити", stadium: "Классика" },
                         { team1: "Острые", team2: "Рубин", stadium: "Норфа" },
                         { team1: "Инфинити", team2: "BB TEAM", stadium: "Классика" },
                         { team1: "Десятка", team2: "Игривые Дятлы", stadium: "Норфа" },
@@ -1060,9 +1072,8 @@
         renderGallery();
         setupNavigation();
 
-        console.log('🚀 FOOTCUP 2026 — ОБНОВЛЕНЫ РЕЗУЛЬТАТЫ 2-ГО ТУРА!');
-        console.log('✅ Пандора 3:0 Воздушные Дьяволы');
-        console.log('🤝 Лео Юнайдет 8:8 Боровички');
+        console.log('🚀 FOOTCUP 2026 — ОБНОВЛЕНЫ РЕЗУЛЬТАТЫ 3-го ТУРА!');
+        console.log('📊 По данным со скриншота');
     })();
 </script>
 </body>
