@@ -84,35 +84,91 @@
         .team-row .team-name { flex: 1; }
         .team-row .team-points { font-weight: 700; color: #fbbf24; min-width: 30px; text-align: right; }
 
-        .schedule-wrapper { margin-top: 6px; }
-        .tour-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-        .tour-tab { padding: 8px 20px; border-radius: 40px; border: 1px solid rgba(60, 140, 255, 0.10); background: rgba(255,255,255,0.03); color: #6a8aaa; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; }
-        .tour-tab:hover { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.20); color: #b0d0f0; }
-        .tour-tab.active { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.30); color: #fff; }
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-        .match-card { background: rgba(15, 35, 75, 0.45); backdrop-filter: blur(12px); border-radius: 24px; padding: 18px 20px; border: 1px solid rgba(60, 140, 255, 0.06); transition: all 0.3s ease; display: flex; flex-direction: column; gap: 6px; }
-        .match-card:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.20); box-shadow: 0 12px 40px rgba(0, 20, 60, 0.3); }
-        .match-card .match-teams { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; }
-        .match-card .match-teams .team { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.95rem; }
-        .match-card .match-teams .team .mini-emblema { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); flex-shrink: 0; }
-        .match-card .match-teams .team .mini-emblema img { width: 100%; height: 100%; object-fit: contain; }
-        .match-card .match-teams .vs { color: #3b82f6; font-weight: 700; font-size: 0.8rem; opacity: 0.4; }
-        .match-card .match-score { font-weight: 800; font-size: 1.2rem; color: #fbbf24; text-align: center; padding: 4px 0; }
-        .match-card .match-score.scheduled { color: #4a6a8a; }
-        .match-card .match-info { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #6a8aaa; border-top: 1px solid rgba(60, 140, 255, 0.06); padding-top: 8px; flex-wrap: wrap; gap: 4px; }
-        .match-card .match-info .stadium { color: #60a5fa; font-weight: 600; }
-        .match-card .match-info .status { font-weight: 600; }
-        .match-card .match-info .status.played { color: #34d399; }
-        .match-card .match-info .status.scheduled { color: #fbbf24; }
-        .match-card .match-info .datetime { color: #8ab4e8; font-weight: 500; }
+        /* ===== ДВЕ ОТДЕЛЬНЫЕ СЕТКИ ===== */
+        .bracket-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .bracket-side {
+            background: rgba(15, 35, 75, 0.20);
+            border-radius: 28px;
+            padding: 20px 16px;
+            border: 1px solid rgba(60, 140, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .bracket-side-title {
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: #8ab4e8;
+            letter-spacing: 4px;
+            border-bottom: 1px solid rgba(60, 140, 255, 0.10);
+            padding-bottom: 10px;
+            margin-bottom: 6px;
+        }
+        .bracket-match {
+            background: rgba(15, 35, 75, 0.65);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 10px 12px;
+            border: 1px solid rgba(60, 140, 255, 0.12);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .bracket-match:hover { transform: scale(1.02); border-color: rgba(59, 130, 246, 0.4); }
+        .bracket-match .b-team {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 2px 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #d0e4f0;
+        }
+        .bracket-match .b-team .mini-emblema {
+            width: 24px; height: 24px; border-radius: 6px; overflow: hidden; background: rgba(255,255,255,0.05); flex-shrink: 0;
+        }
+        .bracket-match .b-team .mini-emblema img { width: 100%; height: 100%; object-fit: contain; }
+        .bracket-match .b-score {
+            font-weight: 800; font-size: 1.1rem; color: #fbbf24; padding: 1px 0;
+        }
+        .bracket-match .b-label {
+            font-size: 0.5rem; color: #6a8aaa; margin-top: 3px; border-top: 1px solid rgba(60, 140, 255, 0.08); padding-top: 4px; text-transform: uppercase; letter-spacing: 1px;
+        }
 
-        .bracket-placeholder { background: rgba(15, 35, 75, 0.40); backdrop-filter: blur(12px); border-radius: 36px; padding: 56px 32px; border: 2px dashed rgba(60, 140, 255, 0.15); text-align: center; width: 100%; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden; }
-        .bracket-placeholder::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(59, 130, 246, 0.03), transparent, rgba(234, 179, 8, 0.02), transparent); animation: rotateBg 20s linear infinite; }
-        @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .bracket-placeholder i { font-size: 4rem; color: #3b82f6; margin-bottom: 16px; display: block; opacity: 0.4; animation: float 3s ease-in-out infinite; position: relative; z-index: 1; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        .bracket-placeholder h2 { font-size: 1.6rem; color: #8ab4e8; margin-bottom: 8px; font-weight: 700; position: relative; z-index: 1; }
-        .bracket-placeholder p { color: #5a7a9a; font-size: 1rem; position: relative; z-index: 1; }
+        /* финал между сетками */
+        .bracket-final {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            grid-column: 1 / -1;
+        }
+        .bracket-final .bracket-match {
+            max-width: 400px;
+            width: 100%;
+            padding: 18px 20px;
+            border-color: rgba(234, 179, 8, 0.3);
+        }
+        .bracket-final .bracket-match .b-team {
+            font-size: 1rem;
+        }
+        .bracket-final .bracket-match .b-score {
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 900px) {
+            .bracket-container { grid-template-columns: 1fr; gap: 20px; }
+        }
+        @media (max-width: 500px) {
+            .bracket-match .b-team { font-size: 0.75rem; }
+            .bracket-match .b-team .mini-emblema { width: 20px; height: 20px; }
+        }
 
         .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 6px; }
         @media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -211,36 +267,6 @@
         .fake-btn i { color: #eab308; }
         .fake-btn:hover { background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.20); }
 
-        .poll-container { background: rgba(15, 35, 75, 0.45); backdrop-filter: blur(12px); border-radius: 32px; padding: 28px 24px; border: 1px solid rgba(60, 140, 255, 0.08); max-width: 800px; margin: 0 auto; text-align: center; }
-        .poll-container h3 { font-size: 1.3rem; margin-bottom: 8px; color: #e8f0f8; }
-        .poll-container .poll-status { font-size: 0.9rem; color: #60a5fa; margin-bottom: 16px; padding: 8px 16px; background: rgba(59, 130, 246, 0.08); border-radius: 40px; display: inline-block; }
-        .poll-container .poll-status i { margin-right: 6px; }
-        .poll-container .poll-status.voted { color: #34d399; background: rgba(52, 211, 153, 0.10); }
-        .poll-container .poll-stats { color: #5a7a9a; font-size: 0.9rem; margin-bottom: 16px; }
-        .poll-container .poll-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 500px; overflow-y: auto; padding-right: 4px; }
-        .poll-container .poll-options::-webkit-scrollbar { width: 4px; }
-        .poll-container .poll-options::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 4px; }
-        .poll-container .poll-options::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.20); border-radius: 4px; }
-        .poll-container .poll-option { background: rgba(255,255,255,0.03); border: 1px solid rgba(60, 140, 255, 0.06); border-radius: 14px; padding: 10px 14px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; color: #c8dce8; font-weight: 500; font-size: 0.85rem; }
-        .poll-container .poll-option:hover:not(.disabled) { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.20); transform: scale(1.02); }
-        .poll-container .poll-option.disabled { opacity: 0.5; cursor: default; pointer-events: none; }
-        .poll-container .poll-option.voted-for { border-color: #34d399 !important; background: rgba(52, 211, 153, 0.08) !important; }
-        .poll-container .poll-option .poll-emblema { width: 30px; height: 30px; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); flex-shrink: 0; border: 1px solid rgba(255,255,255,0.05); }
-        .poll-container .poll-option .poll-emblema img { width: 100%; height: 100%; object-fit: contain; }
-        .poll-container .poll-option .poll-name { flex: 1; text-align: left; font-size: 0.85rem; }
-        .poll-container .poll-option .poll-votes { font-size: 0.75rem; color: #5a7a9a; min-width: 30px; text-align: right; }
-        .poll-container .poll-option .poll-bar { width: 60px; height: 4px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; flex-shrink: 0; }
-        .poll-container .poll-option .poll-bar .fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 4px; transition: width 0.6s ease; width: 0%; }
-        .poll-container .poll-option .poll-rank { font-size: 0.65rem; color: #3b82f6; font-weight: 700; min-width: 22px; text-align: center; }
-        .poll-container .poll-reset { margin-top: 16px; padding: 8px 20px; background: rgba(239, 68, 68, 0.10); border: 1px solid rgba(239, 68, 68, 0.15); border-radius: 40px; color: #f87171; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
-        .poll-container .poll-reset:hover { background: rgba(239, 68, 68, 0.20); border-color: rgba(239, 68, 68, 0.30); }
-        @media (max-width: 600px) { .poll-container .poll-options { grid-template-columns: 1fr; gap: 8px; max-height: 400px; } .poll-container .poll-option { padding: 8px 12px; font-size: 0.8rem; } .poll-container .poll-option .poll-emblema { width: 26px; height: 26px; } .poll-container .poll-option .poll-bar { width: 40px; } .poll-container .poll-option .poll-name { font-size: 0.8rem; } }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 6px; }
-        .gallery-item { background: rgba(15, 35, 75, 0.45); backdrop-filter: blur(12px); border-radius: 20px; overflow: hidden; border: 1px solid rgba(60, 140, 255, 0.06); transition: all 0.4s ease; aspect-ratio: 1/1; position: relative; display: flex; align-items: center; justify-content: center; }
-        .gallery-item:hover { transform: scale(1.03); border-color: rgba(59, 130, 246, 0.20); box-shadow: 0 12px 40px rgba(0, 20, 60, 0.3); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: #fff; font-size: 0.75rem; font-weight: 600; opacity: 0; transition: opacity 0.3s ease; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
         .footer-note { margin-top: 48px; text-align: center; color: #3a5a7a; font-size: 0.8rem; border-top: 1px solid rgba(59, 130, 246, 0.06); padding-top: 28px; letter-spacing: 3px; font-weight: 500; }
         .footer-note i { color: #eab308; margin: 0 4px; }
         @media (max-width: 480px) {
@@ -250,18 +276,9 @@
             .team-row { font-size: 0.82rem; padding: 5px 4px; }
             .news-content { padding: 16px; }
             .news-content .news-title { font-size: 1.05rem; }
-            .bracket-placeholder { padding: 32px 20px; }
-            .bracket-placeholder i { font-size: 3rem; }
-            .bracket-placeholder h2 { font-size: 1.2rem; }
             .section-title { font-size: 1.3rem; padding-left: 14px; }
             .tournament-header { padding: 18px 14px 16px; border-radius: 60px 60px 30px 30px; }
             .tournament-header h1 { font-size: 2.2rem; }
-            .match-card { padding: 14px 16px; }
-            .schedule-grid { grid-template-columns: 1fr; }
-            .tour-tab { padding: 6px 14px; font-size: 0.8rem; }
-            .poll-container { padding: 16px 12px; }
-            .poll-container .poll-options { max-height: 350px; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .stat-name { font-size: 0.7rem; }
             .stat-team { font-size: 0.5rem; padding: 1px 6px; }
             .bets-placeholder { padding: 32px 20px; }
@@ -272,10 +289,6 @@
             .tournament-header h1 { font-size: 1.8rem; }
             .team-emblema { width: 28px; height: 28px; }
             .groups-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .poll-container .poll-option { padding: 6px 10px; font-size: 0.7rem; }
-            .poll-container .poll-option .poll-emblema { width: 22px; height: 22px; }
-            .poll-container .poll-option .poll-bar { width: 30px; }
         }
     </style>
 </head>
@@ -286,18 +299,15 @@
         <h1>
             <i class="fas fa-futbol"></i> FOOTCUP <i class="fas fa-trophy"></i>
         </h1>
-        <div class="subhead"><i class="fas fa-calendar-alt"></i> 2026 · 20 команд · 4 группы</div>
+        <div class="subhead"><i class="fas fa-calendar-alt"></i> 2026 · 19 команд · 4 группы</div>
     </header>
 
     <div class="nav-tabs">
         <button class="nav-tab active" data-page="groups"><i class="fas fa-layer-group"></i> Группы</button>
-        <button class="nav-tab" data-page="schedule"><i class="fas fa-calendar-alt"></i> Расписание</button>
         <button class="nav-tab" data-page="bracket"><i class="fas fa-arrow-right"></i> Плей-офф</button>
         <button class="nav-tab" data-page="news"><i class="fas fa-newspaper"></i> Новости</button>
         <button class="nav-tab" data-page="stats"><i class="fas fa-star"></i> Статистика</button>
         <button class="nav-tab" data-page="bets"><i class="fas fa-coins"></i> Ставки</button>
-        <button class="nav-tab" data-page="poll"><i class="fas fa-vote-yea"></i> Голосование</button>
-        <button class="nav-tab" data-page="gallery"><i class="fas fa-images"></i> Галерея</button>
     </div>
 
     <!-- ГРУППЫ -->
@@ -306,23 +316,10 @@
         <div class="groups-grid" id="groupsContainer"></div>
     </div>
 
-    <!-- РАСПИСАНИЕ -->
-    <div class="page" id="page-schedule">
-        <div class="section-title"><i class="fas fa-calendar-alt"></i> Расписание матчей</div>
-        <div class="schedule-wrapper">
-            <div class="tour-tabs" id="scheduleTabs"></div>
-            <div class="schedule-grid" id="scheduleContainer"></div>
-        </div>
-    </div>
-
     <!-- ПЛЕЙ-ОФФ -->
     <div class="page" id="page-bracket">
-        <div class="section-title"><i class="fas fa-arrow-right"></i> Плей-офф · от 1/8 до финала</div>
-        <div class="bracket-placeholder">
-            <i class="fas fa-clock"></i>
-            <h2>Турнир ещё не начался</h2>
-            <p>Сетка плей-офф появится после завершения группового этапа</p>
-        </div>
+        <div class="section-title"><i class="fas fa-arrow-right"></i> Плей-офф · 1/8 → 1/4 → 1/2 → Финал</div>
+        <div id="bracketContainer"></div>
     </div>
 
     <!-- НОВОСТИ -->
@@ -346,24 +343,6 @@
             <p>Раздел ставок будет доступен во время начала плей-офф.<br>Следите за обновлениями!</p>
             <div class="countdown"><i class="fas fa-clock"></i> Откроется после завершения группового этапа</div>
         </div>
-    </div>
-
-    <!-- ГОЛОСОВАНИЕ -->
-    <div class="page" id="page-poll">
-        <div class="section-title"><i class="fas fa-vote-yea"></i> Кто выиграет FOOTCUP 2026?</div>
-        <div class="poll-container" id="pollContainer">
-            <h3>🏆 Прогноз на чемпиона</h3>
-            <div class="poll-status" id="pollStatus"><i class="fas fa-info-circle"></i> Вы ещё не голосовали</div>
-            <div class="poll-stats">Всего голосов: <span id="totalVotes">0</span></div>
-            <div class="poll-options" id="pollOptions"></div>
-            <button class="poll-reset" id="resetVote" style="display:none;"><i class="fas fa-undo"></i> Отменить голос</button>
-        </div>
-    </div>
-
-    <!-- ГАЛЕРЕЯ -->
-    <div class="page" id="page-gallery">
-        <div class="section-title"><i class="fas fa-images"></i> Галерея моментов</div>
-        <div class="gallery-grid" id="galleryContainer"></div>
     </div>
 
     <div class="footer-note">
@@ -392,79 +371,215 @@
             { name: "Шарапа", emblem: "images/sharapa.jpg" },
             { name: "Байер", emblem: "images/bayer.jpg" },
             { name: "Дельфины", emblem: "images/delfiny.jpg" },
-            { name: "Unity Team", emblem: "images/unity_team.jpg" },
             { name: "Листик", emblem: "images/listik.jpg" },
             { name: "ФК Коробка", emblem: "images/fk_korobka.jpg" }
         ];
 
-        const teamNames = teamsWithEmblems.map(t => t.name);
-        
-        const groups = [
-            { name: "Группа A", teams: ["Лео Юнайтед", "Воздушные Дьяволы", "Боровички", "Пандора", "Черк Сити"] },
-            { name: "Группа B", teams: ["Пироговские Псы", "Острые", "Рубин", "Инфинити", "BB TEAM"] },
-            { name: "Группа C", teams: ["Lit Energy", "Десятка", "Игривые Дятлы", "ТЭЦ-27", "Шарапа"] },
-            { name: "Группа D", teams: ["Байер", "Дельфины", "Unity Team", "Листик", "ФК Коробка"] }
-        ];
+        // ---------- ГРУППЫ ----------
+        function renderGroups() {
+            const container = document.getElementById('groupsContainer');
+            container.innerHTML = '';
+            
+            const groupsData = [
+                { name: "Группа А", teams: [
+                    { name: "Пандора", points: 9 },
+                    { name: "Лео Юнайтед", points: 7 },
+                    { name: "Боровички", points: 7 },
+                    { name: "Воздушные Дьяволы", points: 3 }
+                ]},
+                { name: "Группа Б", teams: [
+                    { name: "Острые", points: 9 },
+                    { name: "Пироговские Псы", points: 7 },
+                    { name: "Инфинити", points: 7 },
+                    { name: "Рубин", points: 3 }
+                ]},
+                { name: "Группа В", teams: [
+                    { name: "Десятка", points: 12 },
+                    { name: "Lit Energy", points: 9 },
+                    { name: "ТЭЦ-27", points: 6 },
+                    { name: "Шарапа", points: 3 }
+                ]},
+                { name: "Группа Г", teams: [
+                    { name: "Байер", points: 12 },
+                    { name: "Дельфины", points: 6 },
+                    { name: "ФК Коробка", points: 1 },
+                    { name: "Листик", points: 1 }
+                ]}
+            ];
+            
+            groupsData.forEach(g => {
+                const card = document.createElement('div');
+                card.className = 'group-card';
+                const title = document.createElement('div');
+                title.className = 'group-title';
+                title.innerHTML = `<i class="fas fa-flag"></i> ${g.name}`;
+                card.appendChild(title);
 
-        // РЕЗУЛЬТАТЫ МАТЧЕЙ
-        const playedMatches = [
-            // ТУР 1
-            { team1: "Воздушные Дьяволы", team2: "Лео Юнайтед", score1: 5, score2: 7, winner: "Лео Юнайтед", date: "5 августа", time: "18:00" },
-            { team1: "Боровички", team2: "Черк Сити", score1: 8, score2: 4, winner: "Боровички", date: "4 августа", time: "18:30" },
-            { team1: "Пироговские Псы", team2: "Острые", score1: 4, score2: 6, winner: "Острые", date: "4 августа", time: "18:30" },
-            { team1: "Рубин", team2: "Инфинити", score1: 0, score2: 3, winner: "Инфинити", date: "4 августа", time: "17:00" },
-            { team1: "Lit Energy", team2: "Десятка", score1: 2, score2: 4, winner: "Десятка", date: "4 августа", time: "13:00" },
-            { team1: "Игривые Дятлы", team2: "ТЭЦ-27", score1: 4, score2: 8, winner: "ТЭЦ-27", date: "4 августа", time: "19:45" },
-            { team1: "Байер", team2: "Дельфины", score1: 12, score2: 4, winner: "Байер", date: "4 августа", time: "17:00" },
-            { team1: "Unity Team", team2: "Листик", score1: 9, score2: 3, winner: "Unity Team", date: "4 августа", time: "14:00" },
-            // ТУР 2
-            { team1: "Байер", team2: "Unity Team", score1: 11, score2: 6, winner: "Байер", date: "6 августа", time: "14:15" },
-            { team1: "ФК Коробка", team2: "Дельфины", score1: 6, score2: 10, winner: "Дельфины", date: "6 августа", time: "15:00" },
-            { team1: "Пандора", team2: "Воздушные Дьяволы", score1: 3, score2: 0, winner: "Пандора", date: "6 августа", time: "15:30" },
-            { team1: "Рубин", team2: "Пироговские Псы", score1: 4, score2: 11, winner: "Пироговские Псы", date: "6 августа", time: "16:30" },
-            { team1: "Десятка", team2: "Шарапа", score1: 10, score2: 4, winner: "Десятка", date: "6 августа", time: "17:00" },
-            { team1: "Острые", team2: "BB TEAM", score1: 6, score2: 4, winner: "Острые", date: "6 августа", time: "18:00" },
-            { team1: "Lit Energy", team2: "Игривые Дятлы", score1: 14, score2: 0, winner: "Lit Energy", date: "6 августа", time: "19:45" },
-            { team1: "Боровички", team2: "Лео Юнайтед", score1: 8, score2: 8, winner: null, date: "6 августа", time: "19:45" },
-            // ТУР 3
-            { team1: "Острые", team2: "Инфинити", score1: 7, score2: 4, winner: "Острые", date: "7 августа", time: "20:00" },
-            { team1: "Лео Юнайтед", team2: "Пандора", score1: 7, score2: 9, winner: "Пандора", date: "8 августа", time: "16:00" },
-            { team1: "Десятка", team2: "ТЭЦ-27", score1: 21, score2: 1, winner: "Десятка", date: "8 августа", time: "17:45" },
-            { team1: "BB TEAM", team2: "Пироговские Псы", score1: 7, score2: 9, winner: "Пироговские Псы", date: "8 августа", time: "18:00" },
-            { team1: "Дельфины", team2: "Листик", score1: 14, score2: 1, winner: "Дельфины", date: "8 августа", time: "19:00" },
-            { team1: "ФК Коробка", team2: "Байер", score1: 4, score2: 9, winner: "Байер", date: "8 августа", time: "19:15" },
-            { team1: "Lit Energy", team2: "Шарапа", score1: 6, score2: 2, winner: "Lit Energy", date: "8 августа", time: "20:15" },
-            { team1: "Воздушные Дьяволы", team2: "Черк Сити", score1: 8, score2: 4, winner: "Воздушные Дьяволы", date: "8 августа", time: "18:00" }
-        ];
+                const sortedTeams = [...g.teams].sort((a, b) => b.points - a.points);
 
-        // ---------- ПОЛНАЯ СТАТИСТИКА ИГРОКОВ (из вашего списка) ----------
+                sortedTeams.forEach(team => {
+                    const teamData = teamsWithEmblems.find(t => t.name === team.name);
+                    const emblemSrc = teamData ? teamData.emblem : null;
+
+                    const row = document.createElement('div');
+                    row.className = 'team-row';
+
+                    const emblemDiv = document.createElement('div');
+                    emblemDiv.className = 'team-emblema';
+                    if (emblemSrc) {
+                        const img = document.createElement('img');
+                        img.src = emblemSrc;
+                        img.alt = team.name;
+                        img.loading = 'lazy';
+                        emblemDiv.appendChild(img);
+                    } else {
+                        emblemDiv.textContent = '⚽';
+                        emblemDiv.style.fontSize = '1.5rem';
+                    }
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'team-name';
+                    nameSpan.textContent = team.name;
+
+                    const pointsSpan = document.createElement('span');
+                    pointsSpan.className = 'team-points';
+                    pointsSpan.textContent = team.points;
+
+                    row.appendChild(emblemDiv);
+                    row.appendChild(nameSpan);
+                    row.appendChild(pointsSpan);
+                    card.appendChild(row);
+                });
+                container.appendChild(card);
+            });
+        }
+
+        // ---------- ДВЕ ОТДЕЛЬНЫЕ СЕТКИ ----------
+        function renderBracket() {
+            const container = document.getElementById('bracketContainer');
+            container.innerHTML = '';
+
+            // ---- ЛЕВАЯ СЕТКА ----
+            const leftMatches = [
+                { team1: "Острые", team2: "Листик", label: "1/8 финала" },
+                { team1: "Лео Юнайтед", team2: "ТЭЦ-27", label: "1/8 финала" },
+                { team1: "Пандора", team2: "Шарапа", label: "1/8 финала" },
+                { team1: "Дельфины", team2: "Боровички", label: "1/8 финала" },
+                { team1: "Победитель 1/8 (1)", team2: "Победитель 1/8 (2)", label: "1/4 финала" },
+                { team1: "Победитель 1/8 (3)", team2: "Победитель 1/8 (4)", label: "1/4 финала" },
+                { team1: "Победитель 1/4 (Л1)", team2: "Победитель 1/4 (Л2)", label: "1/2 финала" }
+            ];
+
+            // ---- ПРАВАЯ СЕТКА ----
+            const rightMatches = [
+                { team1: "Байер", team2: "Воздушные Дьяволы", label: "1/8 финала" },
+                { team1: "Пироговские Псы", team2: "ФК Коробка", label: "1/8 финала" },
+                { team1: "Десятка", team2: "Рубин", label: "1/8 финала" },
+                { team1: "Lit Energy", team2: "Инфинити", label: "1/8 финала" },
+                { team1: "Победитель 1/8 (5)", team2: "Победитель 1/8 (6)", label: "1/4 финала" },
+                { team1: "Победитель 1/8 (7)", team2: "Победитель 1/8 (8)", label: "1/4 финала" },
+                { team1: "Победитель 1/4 (П1)", team2: "Победитель 1/4 (П2)", label: "1/2 финала" }
+            ];
+
+            function createMatchCard(match) {
+                const t1 = teamsWithEmblems.find(t => t.name === match.team1);
+                const t2 = teamsWithEmblems.find(t => t.name === match.team2);
+                const card = document.createElement('div');
+                card.className = 'bracket-match';
+                card.innerHTML = `
+                    <div class="b-team">
+                        <span class="mini-emblema">${t1 ? `<img src="${t1.emblem}" alt="">` : '⚽'}</span>
+                        ${match.team1}
+                    </div>
+                    <div class="b-score">— : —</div>
+                    <div class="b-team">
+                        <span class="mini-emblema">${t2 ? `<img src="${t2.emblem}" alt="">` : '⚽'}</span>
+                        ${match.team2}
+                    </div>
+                    <div class="b-label">${match.label}</div>
+                `;
+                return card;
+            }
+
+            // Контейнер для двух сеток
+            const bracketContainer = document.createElement('div');
+            bracketContainer.className = 'bracket-container';
+
+            // ЛЕВАЯ СЕТКА
+            const leftSide = document.createElement('div');
+            leftSide.className = 'bracket-side';
+            const leftTitle = document.createElement('div');
+            leftTitle.className = 'bracket-side-title';
+            leftTitle.textContent = '← ЛЕВАЯ СЕТКА';
+            leftSide.appendChild(leftTitle);
+            leftMatches.forEach(m => {
+                leftSide.appendChild(createMatchCard(m));
+            });
+            bracketContainer.appendChild(leftSide);
+
+            // ПРАВАЯ СЕТКА
+            const rightSide = document.createElement('div');
+            rightSide.className = 'bracket-side';
+            const rightTitle = document.createElement('div');
+            rightTitle.className = 'bracket-side-title';
+            rightTitle.textContent = 'ПРАВАЯ СЕТКА →';
+            rightSide.appendChild(rightTitle);
+            rightMatches.forEach(m => {
+                rightSide.appendChild(createMatchCard(m));
+            });
+            bracketContainer.appendChild(rightSide);
+
+            container.appendChild(bracketContainer);
+
+            // ---- ФИНАЛ (под сетками) ----
+            const finalDiv = document.createElement('div');
+            finalDiv.className = 'bracket-final';
+            const finalCard = document.createElement('div');
+            finalCard.className = 'bracket-match';
+            finalCard.innerHTML = `
+                <div class="b-team">Победитель левой сетки</div>
+                <div class="b-score">— : —</div>
+                <div class="b-team">Победитель правой сетки</div>
+                <div class="b-label">🏆 ФИНАЛ</div>
+            `;
+            finalDiv.appendChild(finalCard);
+            container.appendChild(finalDiv);
+        }
+
+        // ---------- СТАТИСТИКА ----------
         const playersStats = [
-            // ТЭЦ-27
-            { name: "Эргашев", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Саруханов", team: "ТЭЦ-27", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Эргашев", team: "ТЭЦ-27", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Саруханов", team: "ТЭЦ-27", goals: 2, assists: 5, yellow: 0, red: 0 },
             { name: "Чухилев", team: "ТЭЦ-27", goals: 0, assists: 1, yellow: 0, red: 0 },
-            { name: "Березняк", team: "ТЭЦ-27", goals: 3, assists: 1, yellow: 0, red: 0 },
-            { name: "Зайцев", team: "ТЭЦ-27", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Березняк", team: "ТЭЦ-27", goals: 3, assists: 2, yellow: 0, red: 0 },
+            { name: "Зайцев", team: "ТЭЦ-27", goals: 12, assists: 4, yellow: 1, red: 0 },
             { name: "Нечаев", team: "ТЭЦ-27", goals: 0, assists: 1, yellow: 0, red: 0 },
-            // Игривые Дятлы
-            { name: "Доленко", team: "Игривые Дятлы", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Коротицкий", team: "ТЭЦ-27", goals: 4, assists: 2, yellow: 0, red: 0 },
+            { name: "Бунётбеков", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Урбанович", team: "ТЭЦ-27", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Доленко", team: "Игривые Дятлы", goals: 1, assists: 2, yellow: 0, red: 0 },
             { name: "Кузнецов", team: "Игривые Дятлы", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Калашников", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 1, red: 0 },
             { name: "Тимонин", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            // Байер
+            { name: "Комаров", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Базметьев", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Трошин", team: "Игривые Дятлы", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Елистратов", team: "Игривые Дятлы", goals: 0, assists: 0, yellow: 1, red: 0 },
+            { name: "Пахметьев", team: "Игривые Дятлы", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Московских", team: "Байер", goals: 5, assists: 2, yellow: 0, red: 0 },
-            { name: "Джабарян", team: "Байер", goals: 0, assists: 10, yellow: 0, red: 0 },
-            { name: "Марков", team: "Байер", goals: 12, assists: 3, yellow: 0, red: 0 },
-            { name: "Карпеев", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Джабарян", team: "Байер", goals: 0, assists: 13, yellow: 0, red: 0 },
+            { name: "Марков", team: "Байер", goals: 20, assists: 6, yellow: 0, red: 0 },
+            { name: "Карпеев", team: "Байер", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Монгол", team: "Байер", goals: 2, assists: 1, yellow: 1, red: 0 },
-            { name: "Тельцов", team: "Байер", goals: 8, assists: 4, yellow: 0, red: 0 },
+            { name: "Тельцов", team: "Байер", goals: 12, assists: 6, yellow: 0, red: 0 },
             { name: "Спиридонов", team: "Байер", goals: 2, assists: 1, yellow: 0, red: 0 },
-            { name: "Эдик (Арутюнов)", team: "Байер", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Эдик (Арутюнов)", team: "Байер", goals: 2, assists: 1, yellow: 0, red: 1 },
             { name: "Ключев", team: "Байер", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Ульянов", team: "Байер", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Ахмедкаримов", team: "Байер", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Ахмедкаримов", team: "Байер", goals: 1, assists: 0, yellow: 1, red: 0 },
             { name: "Ванюков", team: "Байер", goals: 0, assists: 3, yellow: 0, red: 0 },
-            // Дельфины
+            { name: "Афанасенков", team: "Байер", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Соколовский", team: "Байер", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Генштальт", team: "Дельфины", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Хороз", team: "Дельфины", goals: 2, assists: 3, yellow: 1, red: 0 },
             { name: "Русик", team: "Дельфины", goals: 5, assists: 4, yellow: 0, red: 0 },
@@ -475,57 +590,52 @@
             { name: "Гощан", team: "Дельфины", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Аслам", team: "Дельфины", goals: 5, assists: 1, yellow: 0, red: 0 },
             { name: "Ара", team: "Дельфины", goals: 3, assists: 1, yellow: 0, red: 0 },
-            // Боровички
             { name: "Акопян", team: "Боровички", goals: 2, assists: 1, yellow: 0, red: 0 },
             { name: "Царукян", team: "Боровички", goals: 1, assists: 3, yellow: 1, red: 0 },
             { name: "Самедов", team: "Боровички", goals: 7, assists: 1, yellow: 1, red: 0 },
-            { name: "Меринов", team: "Боровички", goals: 0, assists: 1, yellow: 1, red: 0 },
-            { name: "Коновалов", team: "Боровички", goals: 2, assists: 0, yellow: 0, red: 0 },
-            { name: "Атлас", team: "Боровички", goals: 1, assists: 2, yellow: 0, red: 0 },
+            { name: "Меринов", team: "Боровички", goals: 2, assists: 2, yellow: 1, red: 0 },
+            { name: "Коновалов", team: "Боровички", goals: 2, assists: 0, yellow: 1, red: 0 },
+            { name: "Атлас", team: "Боровички", goals: 3, assists: 2, yellow: 0, red: 0 },
             { name: "Мельник", team: "Боровички", goals: 2, assists: 2, yellow: 1, red: 0 },
             { name: "Евсеев", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Ванюан", team: "Боровички", goals: 0, assists: 1, yellow: 0, red: 0 },
-            // Черк Сити
             { name: "Самодуров", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Смирнов", team: "Черк Сити", goals: 3, assists: 0, yellow: 1, red: 0 },
-            { name: "Сибагатулин", team: "Черк Сити", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Смирнов", team: "Черк Сити", goals: 5, assists: 0, yellow: 1, red: 0 },
+            { name: "Сибагатулин", team: "Черк Сити", goals: 3, assists: 2, yellow: 0, red: 0 },
             { name: "Кафаров Заур", team: "Черк Сити", goals: 0, assists: 2, yellow: 0, red: 0 },
             { name: "Рузин", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Ручин", team: "Черк Сити", goals: 0, assists: 0, yellow: 1, red: 0 },
-            // Пироговские Псы
+            { name: "Ручин", team: "Черк Сити", goals: 0, assists: 1, yellow: 1, red: 0 },
+            { name: "Кухаркин", team: "Черк Сити", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Куликов", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Узунян (Ваган)", team: "Пироговские Псы", goals: 7, assists: 6, yellow: 0, red: 0 },
+            { name: "Узунян (Ваган)", team: "Пироговские Псы", goals: 8, assists: 6, yellow: 0, red: 0 },
             { name: "Бычинский", team: "Пироговские Псы", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Петросян", team: "Пироговские Псы", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Петросян", team: "Пироговские Псы", goals: 3, assists: 3, yellow: 0, red: 0 },
             { name: "Утюг (Утюганов)", team: "Пироговские Псы", goals: 4, assists: 2, yellow: 0, red: 0 },
             { name: "Ален", team: "Пироговские Псы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Тульчинский", team: "Пироговские Псы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Гор (Степанян)", team: "Пироговские Псы", goals: 5, assists: 2, yellow: 0, red: 0 },
-            { name: "Трусов", team: "Пироговские Псы", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Гор (Степанян)", team: "Пироговские Псы", goals: 6, assists: 2, yellow: 0, red: 0 },
+            { name: "Трусов", team: "Пироговские Псы", goals: 3, assists: 1, yellow: 0, red: 0 },
             { name: "Саргсян", team: "Пироговские Псы", goals: 0, assists: 3, yellow: 0, red: 0 },
-            // Острые
+            { name: "Татунашвили", team: "Пироговские Псы", goals: 2, assists: 0, yellow: 0, red: 0 },
             { name: "Марченков", team: "Острые", goals: 8, assists: 2, yellow: 1, red: 0 },
             { name: "Мартынов", team: "Острые", goals: 2, assists: 3, yellow: 0, red: 0 },
             { name: "Давыдов", team: "Острые", goals: 3, assists: 2, yellow: 0, red: 0 },
             { name: "Евсеев", team: "Острые", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Козлов", team: "Острые", goals: 4, assists: 3, yellow: 0, red: 0 },
             { name: "Жирович (Журович)", team: "Острые", goals: 1, assists: 1, yellow: 0, red: 0 },
-            // Unity Team
-            { name: "Скворцов", team: "Unity Team", goals: 5, assists: 1, yellow: 0, red: 0 },
-            { name: "Ратов", team: "Unity Team", goals: 1, assists: 3, yellow: 0, red: 0 },
-            { name: "Авдохин", team: "Unity Team", goals: 1, assists: 3, yellow: 0, red: 0 },
-            { name: "Винниченко", team: "Unity Team", goals: 5, assists: 2, yellow: 1, red: 0 },
-            { name: "Колян", team: "Unity Team", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Кульчитский", team: "Unity Team", goals: 1, assists: 1, yellow: 0, red: 0 },
-            // Листик
             { name: "Володя", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Фомичев", team: "Листик", goals: 0, assists: 2, yellow: 0, red: 0 },
-            { name: "Макарцев", team: "Листик", goals: 0, assists: 0, yellow: 1, red: 0 },
-            { name: "Челноков", team: "Листик", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Фомичев", team: "Листик", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Макарцев", team: "Листик", goals: 0, assists: 1, yellow: 1, red: 0 },
+            { name: "Челноков", team: "Листик", goals: 3, assists: 3, yellow: 0, red: 0 },
             { name: "Тимонин", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Кузнецов", team: "Листик", goals: 0, assists: 1, yellow: 0, red: 0 },
-            // Десятка
-            { name: "Анар", team: "Десятка", goals: 0, assists: 2, yellow: 1, red: 0 },
+            { name: "Кузнецов", team: "Листик", goals: 0, assists: 1, yellow: 1, red: 0 },
+            { name: "Власов", team: "Листик", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Сорокин", team: "Листик", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Пузин", team: "Листик", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Говорухин", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Высоцкий", team: "Листик", goals: 0, assists: 0, yellow: 1, red: 1 },
+            { name: "Шабанов", team: "Листик", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Анар (Айтбаев)", team: "Десятка", goals: 1, assists: 5, yellow: 2, red: 0 },
             { name: "Осиян", team: "Десятка", goals: 12, assists: 3, yellow: 1, red: 0 },
             { name: "Рюлин", team: "Десятка", goals: 1, assists: 2, yellow: 0, red: 0 },
             { name: "Бутусов", team: "Десятка", goals: 4, assists: 5, yellow: 0, red: 0 },
@@ -533,73 +643,83 @@
             { name: "Мишечев", team: "Десятка", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Карапетян", team: "Десятка", goals: 5, assists: 3, yellow: 0, red: 0 },
             { name: "Хохлов", team: "Десятка", goals: 1, assists: 5, yellow: 0, red: 0 },
-            { name: "Айтбаев", team: "Десятка", goals: 1, assists: 3, yellow: 1, red: 0 },
-            // Lit Energy
-            { name: "Абарен (Абаренов)", team: "Lit Energy", goals: 5, assists: 2, yellow: 0, red: 0 },
-            { name: "Бубликов", team: "Lit Energy", goals: 4, assists: 1, yellow: 0, red: 0 },
-            { name: "Давид Шкуратов", team: "Lit Energy", goals: 5, assists: 3, yellow: 1, red: 0 },
+            { name: "Абарен (Абаренов)", team: "Lit Energy", goals: 8, assists: 5, yellow: 0, red: 0 },
+            { name: "Бубликов", team: "Lit Energy", goals: 6, assists: 2, yellow: 0, red: 0 },
+            { name: "Давид Шкуратов", team: "Lit Energy", goals: 8, assists: 4, yellow: 1, red: 0 },
             { name: "Савва Косов", team: "Lit Energy", goals: 1, assists: 0, yellow: 0, red: 1 },
-            { name: "Гордеев", team: "Lit Energy", goals: 3, assists: 0, yellow: 0, red: 0 },
-            { name: "Ефимов", team: "Lit Energy", goals: 1, assists: 1, yellow: 1, red: 0 },
+            { name: "Гордеев", team: "Lit Energy", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Ефимов", team: "Lit Energy", goals: 1, assists: 2, yellow: 1, red: 0 },
             { name: "Гершерский", team: "Lit Energy", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Герасименко", team: "Lit Energy", goals: 0, assists: 1, yellow: 1, red: 0 },
-            // Лео Юнайтед
-            { name: "Скороходов", team: "Лео Юнайтед", goals: 12, assists: 3, yellow: 0, red: 0 },
-            { name: "Стукалов", team: "Лео Юнайтед", goals: 3, assists: 3, yellow: 0, red: 0 },
-            { name: "Болотов", team: "Лео Юнайтед", goals: 0, assists: 2, yellow: 1, red: 0 },
+            { name: "Скороходов", team: "Лео Юнайтед", goals: 14, assists: 4, yellow: 0, red: 0 },
+            { name: "Стукалов", team: "Лео Юнайтед", goals: 3, assists: 4, yellow: 0, red: 0 },
+            { name: "Болотов", team: "Лео Юнайтед", goals: 1, assists: 2, yellow: 1, red: 0 },
             { name: "Шабанов", team: "Лео Юнайтед", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Малоземов", team: "Лео Юнайтед", goals: 3, assists: 1, yellow: 0, red: 0 },
-            { name: "Демехин", team: "Лео Юнайтед", goals: 0, assists: 1, yellow: 0, red: 0 },
-            { name: "Романов", team: "Лео Юнайтед", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Малоземов", team: "Лео Юнайтед", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Демехин", team: "Лео Юнайтед", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Романов", team: "Лео Юнайтед", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Иванов", team: "Лео Юнайтед", goals: 1, assists: 0, yellow: 1, red: 0 },
             { name: "Каробка", team: "Лео Юнайтед", goals: 0, assists: 0, yellow: 0, red: 1 },
-            // Воздушные Дьяволы
+            { name: "Баринов", team: "Лео Юнайтед", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Якушев", team: "Лео Юнайтед", goals: 2, assists: 3, yellow: 0, red: 0 },
             { name: "Тихонов", team: "Воздушные Дьяволы", goals: 5, assists: 2, yellow: 0, red: 0 },
             { name: "Хасанов", team: "Воздушные Дьяволы", goals: 4, assists: 3, yellow: 0, red: 0 },
             { name: "Комиссаров", team: "Воздушные Дьяволы", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Пархомец", team: "Воздушные Дьяволы", goals: 3, assists: 4, yellow: 0, red: 0 },
             { name: "Тихомиров", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 },
             { name: "Ибрагимов", team: "Воздушные Дьяволы", goals: 1, assists: 0, yellow: 0, red: 0 },
-            // ФК Коробка
             { name: "Белоконь", team: "ФК Коробка", goals: 1, assists: 2, yellow: 0, red: 0 },
-            { name: "Сидикзода (Сидиксода)", team: "ФК Коробка", goals: 1, assists: 2, yellow: 0, red: 0 },
-            { name: "Авдонян (Авдоян)", team: "ФК Коробка", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Сидикзода (Сидиксода)", team: "ФК Коробка", goals: 3, assists: 2, yellow: 0, red: 0 },
+            { name: "Авдонян (Авдоян)", team: "ФК Коробка", goals: 4, assists: 3, yellow: 0, red: 0 },
             { name: "Иванов", team: "ФК Коробка", goals: 0, assists: 2, yellow: 0, red: 0 },
-            // BB TEAM
-            { name: "Евсюков", team: "BB TEAM", goals: 2, assists: 0, yellow: 0, red: 0 },
-            { name: "Перчамлы", team: "BB TEAM", goals: 4, assists: 1, yellow: 0, red: 0 },
+            { name: "Клычёв", team: "ФК Коробка", goals: 2, assists: 2, yellow: 0, red: 0 },
+            { name: "Ульянов", team: "ФК Коробка", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Бедняков", team: "ФК Коробка", goals: 1, assists: 0, yellow: 0, red: 0 },
+            { name: "Королев", team: "ФК Коробка", goals: 0, assists: 0, yellow: 1, red: 0 },
+            { name: "Ахмедкаримов", team: "ФК Коробка", goals: 0, assists: 2, yellow: 0, red: 0 },
+            { name: "Евсюков", team: "BB TEAM", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Перчамлы", team: "BB TEAM", goals: 6, assists: 1, yellow: 0, red: 0 },
             { name: "Затенков", team: "BB TEAM", goals: 3, assists: 2, yellow: 0, red: 0 },
             { name: "Жучков", team: "BB TEAM", goals: 3, assists: 0, yellow: 1, red: 0 },
-            // Шарапа
-            { name: "Зотов", team: "Шарапа", goals: 2, assists: 0, yellow: 0, red: 0 },
-            { name: "Гасанов", team: "Шарапа", goals: 1, assists: 1, yellow: 0, red: 0 },
-            { name: "Зверез", team: "Шарапа", goals: 1, assists: 1, yellow: 1, red: 0 },
-            { name: "Федоров", team: "Шарапа", goals: 0, assists: 1, yellow: 1, red: 0 },
+            { name: "Пархомец", team: "BB TEAM", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Шамрин", team: "BB TEAM", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Зотов", team: "Шарапа", goals: 5, assists: 0, yellow: 1, red: 0 },
+            { name: "Гасанов", team: "Шарапа", goals: 2, assists: 5, yellow: 2, red: 0 },
+            { name: "Зверез", team: "Шарапа", goals: 2, assists: 1, yellow: 1, red: 0 },
+            { name: "Федоров", team: "Шарапа", goals: 1, assists: 2, yellow: 1, red: 0 },
             { name: "Романов", team: "Шарапа", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Кузнецов", team: "Шарапа", goals: 1, assists: 1, yellow: 1, red: 0 },
+            { name: "Кузнецов", team: "Шарапа", goals: 4, assists: 1, yellow: 1, red: 0 },
             { name: "Мережкин", team: "Шарапа", goals: 0, assists: 1, yellow: 0, red: 0 },
-            // Рубин
+            { name: "Альгусейнов", team: "Шарапа", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Арушанян", team: "Шарапа", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Шуллецов", team: "Шарапа", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Авакян", team: "Рубин", goals: 0, assists: 0, yellow: 2, red: 1 },
-            { name: "Казарян", team: "Рубин", goals: 2, assists: 2, yellow: 0, red: 0 },
-            { name: "Юрку", team: "Рубин", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Казарян", team: "Рубин", goals: 3, assists: 4, yellow: 0, red: 0 },
+            { name: "Юрку", team: "Рубин", goals: 1, assists: 1, yellow: 0, red: 0 },
             { name: "Сухарь", team: "Рубин", goals: 2, assists: 1, yellow: 0, red: 0 },
-            // Пандора
+            { name: "Амбарян", team: "Рубин", goals: 4, assists: 2, yellow: 0, red: 0 },
+            { name: "Седойкин", team: "Рубин", goals: 4, assists: 0, yellow: 0, red: 0 },
+            { name: "Кумогорцев", team: "Рубин", goals: 2, assists: 1, yellow: 0, red: 0 },
+            { name: "Авакян М", team: "Рубин", goals: 2, assists: 0, yellow: 0, red: 0 },
+            { name: "Авакян Р", team: "Рубин", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Лапицкий", team: "Пандора", goals: 3, assists: 0, yellow: 0, red: 0 },
-            { name: "Харламов", team: "Пандора", goals: 2, assists: 0, yellow: 0, red: 0 },
-            { name: "Марченко", team: "Пандора", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Харламов", team: "Пандора", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Марченко", team: "Пандора", goals: 7, assists: 3, yellow: 0, red: 0 },
             { name: "Шелков", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
-            { name: "Ильин", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
+            { name: "Ильин", team: "Пандора", goals: 1, assists: 2, yellow: 0, red: 0 },
             { name: "Мамонтов", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Молотов", team: "Пандора", goals: 0, assists: 1, yellow: 0, red: 0 },
-            // Инфинити
-            { name: "Юсифов", team: "Инфинити", goals: 2, assists: 0, yellow: 0, red: 0 },
-            { name: "Николаев", team: "Инфинити", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Оськин", team: "Пандора", goals: 0, assists: 4, yellow: 0, red: 0 },
+            { name: "Серокуров", team: "Пандора", goals: 0, assists: 0, yellow: 1, red: 0 },
+            { name: "Юсифов", team: "Инфинити", goals: 3, assists: 1, yellow: 0, red: 0 },
+            { name: "Николаев", team: "Инфинити", goals: 1, assists: 3, yellow: 0, red: 0 },
             { name: "Уздаков", team: "Инфинити", goals: 0, assists: 1, yellow: 0, red: 0 },
             { name: "Рахамимов", team: "Инфинити", goals: 1, assists: 0, yellow: 0, red: 0 },
-            { name: "Шахбазян", team: "Инфинити", goals: 0, assists: 1, yellow: 0, red: 0 }
+            { name: "Шахбазян", team: "Инфинити", goals: 1, assists: 1, yellow: 0, red: 0 },
+            { name: "Рзаев", team: "Инфинити", goals: 3, assists: 0, yellow: 0, red: 0 },
+            { name: "Багдасаров", team: "Инфинити", goals: 0, assists: 1, yellow: 0, red: 0 }
         ];
 
-        // ---------- СТАТИСТИКА ----------
         function getTop5(data, key) {
             const filtered = data.filter(p => p[key] > 0);
             const sorted = [...filtered].sort((a, b) => b[key] - a[key] || a.name.localeCompare(b.name));
@@ -683,222 +803,6 @@
             });
         }
 
-        // ---------- ГРУППЫ ----------
-        function renderGroups() {
-            const container = document.getElementById('groupsContainer');
-            container.innerHTML = '';
-            
-            const points = {};
-            teamNames.forEach(t => points[t] = 0);
-            
-            playedMatches.forEach(m => {
-                if (m.winner) {
-                    points[m.winner] += 3;
-                } else if (m.score1 !== null && m.score1 === m.score2) {
-                    points[m.team1] += 1;
-                    points[m.team2] += 1;
-                }
-            });
-            
-            groups.forEach(g => {
-                const card = document.createElement('div');
-                card.className = 'group-card';
-                const title = document.createElement('div');
-                title.className = 'group-title';
-                title.innerHTML = `<i class="fas fa-flag"></i> ${g.name}`;
-                card.appendChild(title);
-
-                const sortedTeams = [...g.teams].sort((a, b) => points[b] - points[a]);
-
-                sortedTeams.forEach(teamName => {
-                    const teamData = teamsWithEmblems.find(t => t.name === teamName);
-                    const emblemSrc = teamData ? teamData.emblem : null;
-
-                    const row = document.createElement('div');
-                    row.className = 'team-row';
-
-                    const emblemDiv = document.createElement('div');
-                    emblemDiv.className = 'team-emblema';
-                    if (emblemSrc) {
-                        const img = document.createElement('img');
-                        img.src = emblemSrc;
-                        img.alt = teamName;
-                        img.loading = 'lazy';
-                        emblemDiv.appendChild(img);
-                    } else {
-                        emblemDiv.textContent = '⚽';
-                        emblemDiv.style.fontSize = '1.5rem';
-                    }
-
-                    const nameSpan = document.createElement('span');
-                    nameSpan.className = 'team-name';
-                    nameSpan.textContent = teamName;
-
-                    const pointsSpan = document.createElement('span');
-                    pointsSpan.className = 'team-points';
-                    pointsSpan.textContent = points[teamName] || 0;
-
-                    row.appendChild(emblemDiv);
-                    row.appendChild(nameSpan);
-                    row.appendChild(pointsSpan);
-                    card.appendChild(row);
-                });
-                container.appendChild(card);
-            });
-        }
-
-        // ---------- РАСПИСАНИЕ ----------
-        function renderSchedule() {
-            const container = document.getElementById('scheduleContainer');
-            const tabsContainer = document.getElementById('scheduleTabs');
-
-            const allTours = [
-                {
-                    name: "Тур 1",
-                    matches: [
-                        { team1: "Воздушные Дьяволы", team2: "Лео Юнайтед", stadium: "Норфа" },
-                        { team1: "Боровички", team2: "Черк Сити", stadium: "Классика" },
-                        { team1: "Пироговские Псы", team2: "Острые", stadium: "Норфа" },
-                        { team1: "Рубин", team2: "Инфинити", stadium: "Классика" },
-                        { team1: "Lit Energy", team2: "Десятка", stadium: "Классика" },
-                        { team1: "Игривые Дятлы", team2: "ТЭЦ-27", stadium: "Норфа" },
-                        { team1: "Байер", team2: "Дельфины", stadium: "Норфа" },
-                        { team1: "Unity Team", team2: "Листик", stadium: "Норфа" }
-                    ]
-                },
-                {
-                    name: "Тур 2",
-                    matches: [
-                        { team1: "Байер", team2: "Unity Team", stadium: "Классика", date: "6 августа", time: "14:15" },
-                        { team1: "ФК Коробка", team2: "Дельфины", stadium: "Норфа", date: "6 августа", time: "15:00" },
-                        { team1: "Пандора", team2: "Воздушные Дьяволы", stadium: "Классика", date: "6 августа", time: "15:30" },
-                        { team1: "Рубин", team2: "Пироговские Псы", stadium: "Норфа", date: "6 августа", time: "16:30" },
-                        { team1: "Десятка", team2: "Шарапа", stadium: "Классика", date: "6 августа", time: "17:00" },
-                        { team1: "Острые", team2: "BB TEAM", stadium: "Норфа", date: "6 августа", time: "18:00" },
-                        { team1: "Lit Energy", team2: "Игривые Дятлы", stadium: "Норфа", date: "6 августа", time: "19:45" },
-                        { team1: "Боровички", team2: "Лео Юнайтед", stadium: "Классика", date: "6 августа", time: "19:45" }
-                    ]
-                },
-                {
-                    name: "Тур 3",
-                    matches: [
-                        { team1: "Острые", team2: "Инфинити", stadium: "Норфа", date: "7 августа", time: "20:00" },
-                        { team1: "Лео Юнайтед", team2: "Пандора", stadium: "Норфа", date: "8 августа", time: "16:00" },
-                        { team1: "Десятка", team2: "ТЭЦ-27", stadium: "Классика", date: "8 августа", time: "17:45" },
-                        { team1: "BB TEAM", team2: "Пироговские Псы", stadium: "Норфа", date: "8 августа", time: "18:00" },
-                        { team1: "Дельфины", team2: "Листик", stadium: "Классика", date: "8 августа", time: "19:00" },
-                        { team1: "ФК Коробка", team2: "Байер", stadium: "Норфа", date: "8 августа", time: "19:15" },
-                        { team1: "Lit Energy", team2: "Шарапа", stadium: "Классика", date: "8 августа", time: "20:15" },
-                        { team1: "Воздушные Дьяволы", team2: "Черк Сити", stadium: "Норфа", date: "8 августа", time: "18:00" }
-                    ]
-                },
-                {
-                    name: "Тур 4",
-                    matches: [
-                        { team1: "Лео Юнайтед", team2: "Черк Сити", stadium: "Классика" },
-                        { team1: "Боровички", team2: "Пандора", stadium: "Норфа" },
-                        { team1: "Пироговские Псы", team2: "Инфинити", stadium: "Норфа" },
-                        { team1: "Рубин", team2: "BB TEAM", stadium: "Классика" },
-                        { team1: "Lit Energy", team2: "ТЭЦ-27", stadium: "Норфа" },
-                        { team1: "Игривые Дятлы", team2: "Шарапа", stadium: "Классика" },
-                        { team1: "Байер", team2: "Листик", stadium: "Норфа" },
-                        { team1: "Unity Team", team2: "ФК Коробка", stadium: "Классика" }
-                    ]
-                },
-                {
-                    name: "Тур 5",
-                    matches: [
-                        { team1: "Воздушные Дьяволы", team2: "Боровички", stadium: "Норфа" },
-                        { team1: "Пандора", team2: "Черк Сити", stadium: "Классика" },
-                        { team1: "Острые", team2: "Рубин", stadium: "Норфа" },
-                        { team1: "Инфинити", team2: "BB TEAM", stadium: "Классика" },
-                        { team1: "Десятка", team2: "Игривые Дятлы", stadium: "Норфа" },
-                        { team1: "ТЭЦ-27", team2: "Шарапа", stadium: "Классика" },
-                        { team1: "Дельфины", team2: "Unity Team", stadium: "Норфа" },
-                        { team1: "Листик", team2: "ФК Коробка", stadium: "Классика" }
-                    ]
-                }
-            ];
-
-            let currentTour = 0;
-
-            function renderTour(tourIndex) {
-                container.innerHTML = '';
-                const tour = allTours[tourIndex];
-                
-                tour.matches.forEach(m => {
-                    const t1data = teamsWithEmblems.find(t => t.name === m.team1);
-                    const t2data = teamsWithEmblems.find(t => t.name === m.team2);
-
-                    const played = playedMatches.find(p => 
-                        (p.team1 === m.team1 && p.team2 === m.team2) || 
-                        (p.team1 === m.team2 && p.team2 === m.team1)
-                    );
-
-                    const card = document.createElement('div');
-                    card.className = 'match-card';
-                    
-                    let scoreHtml = '';
-                    let statusHtml = '';
-                    let dateTimeHtml = '';
-                    
-                    if (played && played.score1 !== null) {
-                        scoreHtml = `<div class="match-score">${played.score1} : ${played.score2}</div>`;
-                        statusHtml = `<span class="status played"><i class="fas fa-check-circle"></i> Сыгран</span>`;
-                        if (played.date) {
-                            dateTimeHtml = `<span class="datetime"><i class="far fa-calendar-alt"></i> ${played.date} ${played.time || ''}</span>`;
-                        }
-                    } else if (m.date) {
-                        scoreHtml = `<div class="match-score scheduled">— : —</div>`;
-                        statusHtml = `<span class="status scheduled"><i class="far fa-clock"></i> Запланирован</span>`;
-                        dateTimeHtml = `<span class="datetime"><i class="far fa-calendar-alt"></i> ${m.date} ${m.time || ''}</span>`;
-                    } else {
-                        scoreHtml = `<div class="match-score scheduled">— : —</div>`;
-                        statusHtml = `<span class="status scheduled"><i class="far fa-clock"></i> Запланирован</span>`;
-                    }
-
-                    card.innerHTML = `
-                        <div class="match-teams">
-                            <div class="team">
-                                <span class="mini-emblema">${t1data ? `<img src="${t1data.emblem}" alt="">` : '⚽'}</span>
-                                ${m.team1}
-                            </div>
-                            <span class="vs">VS</span>
-                            <div class="team">
-                                <span class="mini-emblema">${t2data ? `<img src="${t2data.emblem}" alt="">` : '⚽'}</span>
-                                ${m.team2}
-                            </div>
-                        </div>
-                        ${scoreHtml}
-                        <div class="match-info">
-                            <span class="stadium"><i class="fas fa-map-pin"></i> ${m.stadium}</span>
-                            ${dateTimeHtml}
-                            ${statusHtml}
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
-
-                document.querySelectorAll('#scheduleTabs .tour-tab').forEach((tab, idx) => {
-                    tab.classList.toggle('active', idx === tourIndex);
-                });
-            }
-
-            tabsContainer.innerHTML = '';
-            allTours.forEach((tour, idx) => {
-                const tab = document.createElement('button');
-                tab.className = 'tour-tab' + (idx === 0 ? ' active' : '');
-                tab.textContent = tour.name;
-                tab.addEventListener('click', () => {
-                    currentTour = idx;
-                    renderTour(idx);
-                });
-                tabsContainer.appendChild(tab);
-            });
-
-            renderTour(0);
-        }
-
         // ---------- НОВОСТИ ----------
         function renderNews() {
             const feed = document.getElementById('newsFeed');
@@ -953,141 +857,15 @@
             });
         }
 
-        // ---------- ГОЛОСОВАНИЕ ----------
-        function renderPoll() {
-            const container = document.getElementById('pollOptions');
-            const statusEl = document.getElementById('pollStatus');
-            const resetBtn = document.getElementById('resetVote');
-            
-            const pollData = teamsWithEmblems.map((team) => ({
-                name: team.name,
-                emblem: team.emblem,
-                votes: 0
-            }));
-
-            const savedVotes = localStorage.getItem('footcup_poll_votes');
-            if (savedVotes) {
-                try {
-                    const savedData = JSON.parse(savedVotes);
-                    if (Array.isArray(savedData) && savedData.length === pollData.length) {
-                        savedData.forEach((s, i) => {
-                            if (pollData[i] && s.name === pollData[i].name) {
-                                pollData[i].votes = s.votes || 0;
-                            }
-                        });
-                    }
-                } catch (e) {}
-            }
-
-            let userVote = localStorage.getItem('footcup_user_vote') || null;
-
-            function updatePoll() {
-                container.innerHTML = '';
-                const total = pollData.reduce((sum, p) => sum + p.votes, 0);
-                document.getElementById('totalVotes').textContent = total;
-
-                localStorage.setItem('footcup_poll_votes', JSON.stringify(pollData));
-
-                if (userVote) {
-                    const votedTeam = pollData.find(p => p.name === userVote);
-                    statusEl.innerHTML = `<i class="fas fa-check-circle"></i> Вы проголосовали за <strong>${userVote}</strong>`;
-                    statusEl.className = 'poll-status voted';
-                    resetBtn.style.display = 'inline-flex';
-                } else {
-                    statusEl.innerHTML = `<i class="fas fa-info-circle"></i> Вы ещё не голосовали — выберите команду!`;
-                    statusEl.className = 'poll-status';
-                    resetBtn.style.display = 'none';
-                }
-
-                const sorted = [...pollData].sort((a, b) => b.votes - a.votes || a.name.localeCompare(b.name));
-
-                sorted.forEach((p, idx) => {
-                    const percent = total > 0 ? Math.round((p.votes / total) * 100) : 0;
-                    const rank = idx + 1;
-                    const isTop = rank <= 3;
-                    const isVoted = userVote === p.name;
-
-                    const div = document.createElement('div');
-                    div.className = 'poll-option';
-                    if (userVote) div.classList.add('disabled');
-                    if (isVoted) div.classList.add('voted-for');
-                    div.style.borderColor = isVoted ? '#34d399' : (isTop ? 'rgba(234, 179, 8, 0.2)' : 'rgba(60, 140, 255, 0.06)');
-                    
-                    const emblemSrc = p.emblem || null;
-
-                    div.innerHTML = `
-                        <span class="poll-rank">${isTop ? ['🥇','🥈','🥉'][rank-1] : `#${rank}`}</span>
-                        <span class="poll-emblema">${emblemSrc ? `<img src="${emblemSrc}" alt="">` : '⚽'}</span>
-                        <span class="poll-name">${p.name} ${isVoted ? '✅' : ''}</span>
-                        <span class="poll-bar"><span class="fill" style="width:${percent}%"></span></span>
-                        <span class="poll-votes">${p.votes}</span>
-                    `;
-                    
-                    if (!userVote) {
-                        div.addEventListener('click', function() {
-                            userVote = p.name;
-                            localStorage.setItem('footcup_user_vote', userVote);
-                            p.votes++;
-                            updatePoll();
-                        });
-                    }
-                    
-                    container.appendChild(div);
-                });
-            }
-
-            resetBtn.addEventListener('click', function() {
-                if (userVote) {
-                    const team = pollData.find(p => p.name === userVote);
-                    if (team && team.votes > 0) {
-                        team.votes--;
-                    }
-                    userVote = null;
-                    localStorage.removeItem('footcup_user_vote');
-                    localStorage.setItem('footcup_poll_votes', JSON.stringify(pollData));
-                    updatePoll();
-                }
-            });
-
-            updatePoll();
-        }
-
-        // ---------- ГАЛЕРЕЯ ----------
-        function renderGallery() {
-            const container = document.getElementById('galleryContainer');
-            const images = [
-                "images/kulik.jpg",
-                "images/vagan.jpg",
-                "images/sergei.jpg",
-                "images/arsen.jpg",
-                "images/vanukov.jpg",
-                "images/rusik.jpg"
-            ];
-
-            container.innerHTML = '';
-            images.forEach((img, idx) => {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                div.innerHTML = `
-                    <img src="${img}" alt="Момент ${idx+1}" loading="lazy">
-                    <div class="gallery-overlay">Момент #${idx+1}</div>
-                `;
-                container.appendChild(div);
-            });
-        }
-
         // ---------- НАВИГАЦИЯ ----------
         function setupNavigation() {
             const tabs = document.querySelectorAll('.nav-tab');
             const pages = {
                 groups: document.getElementById('page-groups'),
-                schedule: document.getElementById('page-schedule'),
                 bracket: document.getElementById('page-bracket'),
                 news: document.getElementById('page-news'),
                 stats: document.getElementById('page-stats'),
-                bets: document.getElementById('page-bets'),
-                poll: document.getElementById('page-poll'),
-                gallery: document.getElementById('page-gallery')
+                bets: document.getElementById('page-bets')
             };
 
             tabs.forEach(tab => {
@@ -1107,14 +885,12 @@
 
         // ---------- ЗАПУСК ----------
         renderGroups();
-        renderSchedule();
+        renderBracket();
         renderStats();
         renderNews();
-        renderPoll();
-        renderGallery();
         setupNavigation();
 
-        console.log('🚀 FOOTCUP 2026 — СТАТИСТИКА ОБНОВЛЕНА!');
+        console.log('🚀 FOOTCUP 2026 — ДВЕ ОТДЕЛЬНЫЕ СЕТКИ (ЛЕВО/ПРАВО) ГОТОВЫ!');
     })();
 </script>
 </body>
